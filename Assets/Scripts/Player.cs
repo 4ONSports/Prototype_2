@@ -28,7 +28,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D c) {
-		if (c.tag == "Ball") {
+		if (c.tag == "Ball" && !hasBall) {
 			HasBall = true;
 			ball = c.GetComponent<Ball>();
 			ball.OnPossession(transform.position);

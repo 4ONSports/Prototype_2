@@ -69,6 +69,7 @@ public class InputHandler : MonoBehaviour {
 
 				if( swipe_length < minSwipeLength ) {
 					isTap = true;
+					StartCoroutine(this.OnTapFrameReset());
 				}
 				else {
 					isTap = false;
@@ -134,5 +135,10 @@ public class InputHandler : MonoBehaviour {
 				}
 			}
 		}
+	}
+
+	private IEnumerator OnTapFrameReset() {
+		yield return null;
+		isTap = false;
 	}
 }
