@@ -17,7 +17,6 @@ public class LookAtTarget : MonoBehaviour {
 	}
 
 	void OnGUI() {
-		GUI.Button (new Rect (0, 0, Screen.width * 0.2f, Screen.height * 0.2f), Input.acceleration.ToString ());
-
+//		GUI.Button (new Rect (0, 0, Screen.width * 0.2f, Screen.height * 0.2f), Input.acceleration.ToString ());
 	}
 }

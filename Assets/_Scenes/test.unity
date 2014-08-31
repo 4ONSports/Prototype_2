@@ -1393,7 +1393,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fingerTouchIndex: 1
-  minSwipeLength: 3
+  mouse2TouchIndex: 0
+  maxTapTime: 5
+  minSwipeLength: 100
 --- !u!4 &1490950719
 Transform:
   m_ObjectHideFlags: 0

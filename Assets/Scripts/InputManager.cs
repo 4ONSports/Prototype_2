@@ -12,16 +12,18 @@ public class InputManager : MonoBehaviour {
 
 	void Update() {
 		if (InputHandler.isTap == true) {
+//			print ("Tap");
 			players.OnTap();
 			return;
 		}
 
-		if (InputHandler.swipe_state == InputHandler.SwipeState.END)
-						players.OnSwipe (InputHandler.swipe_direction);
+		if (InputHandler.swipe_state == InputHandler.SwipeState.END && !InputHandler.isTap) {
+//			print ("Shoot");
+			players.OnSwipe (InputHandler.swipe_direction);
+		}
 
-		/*TODO: Tunde must fix this
-		 * if (InputHandler.isSwiping)
-			print ("Shooting" + InputHandler.swipe_direction);
-			*/
+		if (InputHandler.isSwiping) {
+//			print ("Swiping");
+		}
 	}
 }

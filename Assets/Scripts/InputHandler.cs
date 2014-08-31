@@ -11,6 +11,8 @@ public class InputHandler : MonoBehaviour {
 	}
 	
 	public int fingerTouchIndex = 1;
+	public int mouse2TouchIndex = 0;
+	public float maxTapTime = 100.0f;
 	public float minSwipeLength = 3.0f;
 	public static bool useTouch = false;
 	public static bool isSwiping = false;
@@ -52,13 +54,13 @@ public class InputHandler : MonoBehaviour {
 			mousePos.x = Input.mousePosition.x;
 			mousePos.y = Input.mousePosition.y;
 			
-			if( Input.GetMouseButtonDown(1) ) {
+			if( Input.GetMouseButtonDown(mouse2TouchIndex) ) {
 				swipe_state = SwipeState.BEGIN;
 				isSwiping = true;
 				swipe_startTime = Time.time;
 				swipe_startPos = mousePos;
 			}
-			else if( Input.GetMouseButtonUp(1) ) {
+			else if( Input.GetMouseButtonUp(mouse2TouchIndex) ) {
 				swipe_state = SwipeState.END;
 				isSwiping = false;
 				
@@ -67,7 +69,7 @@ public class InputHandler : MonoBehaviour {
 				swipe_direction = mousePos - swipe_startPos;
 				swipe_direction.Normalize();
 
-				if( swipe_length < minSwipeLength ) {
+				if( swipe_length < minSwipeLength && swipe_duration < maxTapTime ) {
 					isTap = true;
 					StartCoroutine(this.OnTapFrameReset());
 				}
@@ -75,7 +77,7 @@ public class InputHandler : MonoBehaviour {
 					isTap = false;
 				}
 			}
-			else if( Input.GetMouseButton(1) ) {
+			else if( Input.GetMouseButton(mouse2TouchIndex) ) {
 				swipe_state = SwipeState.INPROGRESS;
 				swipe_direction = mousePos - swipe_startPos;
 				swipe_direction.Normalize();
@@ -119,8 +121,9 @@ public class InputHandler : MonoBehaviour {
 					swipe_direction = touch.position - swipe_startPos;
 					swipe_direction.Normalize();
 
-					if( swipe_length < minSwipeLength ) {
+					if( swipe_length < minSwipeLength && swipe_duration < maxTapTime ) {
 						isTap = true;
+						StartCoroutine(this.OnTapFrameReset());
 					}
 					else {
 						isTap = false;
