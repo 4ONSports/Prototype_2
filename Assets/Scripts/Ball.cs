@@ -2,6 +2,9 @@
 using System.Collections;
 
 public class Ball : MonoBehaviour {
+	public LineRenderer linerenderer;
+
+	private LineRenderer ballLine;
 	private PlayerControl_Ball ballOwner = null;
 
 	void Start() {
@@ -29,6 +32,17 @@ public class Ball : MonoBehaviour {
 		if( ballOwner != null ) {
 			this.transform.parent = null;
 			ballOwner = null;
+		}
+		
+//		Debug.DrawLine(transform.position, transform.position + new Vector3(_direction.x, _direction.y, 0.0f)*5, Color.green, 10.0f);
+		if( linerenderer!= null && GameDebug.enableDebugLines ) {
+			ballLine = (ballLine == null) ? Instantiate(linerenderer, transform.position, Quaternion.identity) as LineRenderer: ballLine;
+			
+			ballLine.SetColors(Color.green, Color.green);
+			ballLine.SetWidth(0.02f, 0.02f);
+			ballLine.SetVertexCount(2);
+			ballLine.SetPosition(0, transform.position);
+			ballLine.SetPosition(1, transform.position + new Vector3(_direction.x, _direction.y, 0.0f)*2.5f);
 		}
 	}
 }

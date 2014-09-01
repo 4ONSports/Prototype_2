@@ -20,6 +20,7 @@ public class InputHandler : MonoBehaviour {
 	public static SwipeState swipe_state  = SwipeState.NONE;
 	public static float swipe_startTime  = 0.0f;
 	public static Vector2 swipe_startPos  = Vector2.zero;
+	public static Vector2 swipe_endPos  = Vector2.zero;
 	public static Vector2 swipe_direction  = Vector2.zero;
 	public static float swipe_duration  = 0.0f;
 	public static float swipe_length  = 0.0f;
@@ -63,6 +64,7 @@ public class InputHandler : MonoBehaviour {
 			else if( Input.GetMouseButtonUp(mouse2TouchIndex) ) {
 				swipe_state = SwipeState.END;
 				isSwiping = false;
+				swipe_endPos = mousePos;
 				
 				swipe_duration = Time.time - swipe_startTime;
 				swipe_length = (mousePos - swipe_startPos).magnitude;
@@ -117,6 +119,7 @@ public class InputHandler : MonoBehaviour {
 					isSwiping = false;
 					
 					swipe_duration = Time.time - swipe_startTime;
+					swipe_endPos = touch.position;
 					swipe_length = (touch.position - swipe_startPos).magnitude;
 					swipe_direction = touch.position - swipe_startPos;
 					swipe_direction.Normalize();

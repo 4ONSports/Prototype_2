@@ -16,7 +16,12 @@ public class PlayerControl_Ball : MonoBehaviour {
 	void Update () {
 		if ( InputHandler.swipe_state == InputHandler.SwipeState.END && !InputHandler.isTap ) {
 			if( ball != null ) {
-				Shoot (InputHandler.swipe_direction);
+				Vector3 ballScreenPos = Camera.main.WorldToScreenPoint(ball.gameObject.transform.position);
+				Vector2 ballScreenPos_XY = new Vector2(ballScreenPos.x, ballScreenPos.y);
+				Vector2 shotDir = InputHandler.swipe_endPos-ballScreenPos_XY;
+				shotDir.Normalize();
+
+				Shoot (shotDir);
 				hasABall = false;
 				ball = null;
 			}

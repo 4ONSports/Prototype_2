@@ -853,6 +853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed98fd8e212ed2a4ab6a3e6b85920a76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  linerenderer: {fileID: 12000000, guid: d8c31e0ab6363a3488afa0c8258a3c5a, type: 2}
 --- !u!50 &1187729325
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -1356,6 +1357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed98fd8e212ed2a4ab6a3e6b85920a76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  linerenderer: {fileID: 0}
 --- !u!50 &1452460058
 Rigidbody2D:
   m_ObjectHideFlags: 0
