@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BallTestTwo : MonoBehaviour {
+public class BallTestThree : MonoBehaviour {
 
 	[SerializeField] float tapDistance = 0.6f;
 	[SerializeField] float force = 450f;
