@@ -7,38 +7,83 @@ public class PlayerControl_Movement : MonoBehaviour {
 	public bool allowMovement_X = true;
 	public bool allowMovement_Y = false;
 	public bool noMovementWhenHasBall = true;
+	public int playerCtrlIndex = -1;
 
 	private PlayerControl_Ball pcBall = null;
+	private bool playerCtrlIndexReordered = false;
 
 	// Use this for initialization
 	void Start () {
 		pcBall = this.GetComponent<PlayerControl_Ball>();
+
+		if( !InputHandler.useTouch ) {
+			playerCtrlIndex = 0;
+		}
+	}
+
+	Vector3 GetTouchPosition( int index ) {
+		Vector3 returnPos = Vector3.zero;
+		if( !InputHandler.useTouch ) { 
+			returnPos = Input.mousePosition;
+		}
+		else {
+			Touch touch = Input.GetTouch(index);
+			returnPos.x = touch.position.x;
+			returnPos.y = touch.position.y;
+		}
+		
+		return returnPos;
 	}
 
 	void Update () {
+		for( int i=0; i<InputHandler.maxTouchFingers; ++i ) {
+			// bug fix for when touch 0 is removed
+			if( InputHandler.swipeInfo[i].swipe_state == InputHandler.SwipeState.END ) {
+				if( playerCtrlIndex == i ) {
+					pcBall.CheckForShoot(playerCtrlIndex);
+					playerCtrlIndex = -1;
+					playerSelect = false;
+				}
+				else if( i==0 && playerCtrlIndex>0 ) {
+					--playerCtrlIndex;
+					playerCtrlIndexReordered = true;
+					//InputHandler.ReorderSwipeInfo();
+				}
+			}
+			else if( InputHandler.swipeInfo[i].swipe_state == InputHandler.SwipeState.BEGIN && !playerSelect ) {
+				Ray ray = Camera.main.ScreenPointToRay (GetTouchPosition(i));
+				RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
+				
+				if ( hit.transform != null && hit.collider != null )
+				{
+					if( hit.transform.gameObject.name == gameObject.name ) {
+						playerSelect = true;
+						playerCtrlIndex = i;
+						playerCtrlIndexReordered = false;
+					}
+				}
+			}
+			else if( i == 0 && InputHandler.swipeInfo[i].swipe_state == InputHandler.SwipeState.BEGIN && playerSelect && playerCtrlIndexReordered ) {
+				playerCtrlIndex++;
+				playerCtrlIndexReordered = false;
+			}
+		}
+
 		if( pcBall.hasABall && noMovementWhenHasBall ) {
 			return;
 		}
 
-		if( InputHandler.swipe_state == InputHandler.SwipeState.BEGIN ) {
-			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-			RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
-			
-			if ( hit != null && hit.collider != null )
-			{
-				if( hit.transform.gameObject.name == gameObject.name ) {
-					playerSelect = true;
-				}
-			}
+		if( playerCtrlIndex<0 ) {
+			return;
 		}
 
-		if ( InputHandler.swipe_state == InputHandler.SwipeState.END ) {
-			playerSelect = false;
-		}
+//		if ( InputHandler.swipeInfo[playerCtrlIndex].swipe_state == InputHandler.SwipeState.END ) {
+//			playerSelect = false;
+//		}
 
 		if( playerSelect ) {
-			if( InputHandler.swipe_state == InputHandler.SwipeState.INPROGRESS ) {
-				Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+			if( InputHandler.swipeInfo[playerCtrlIndex].swipe_state == InputHandler.SwipeState.INPROGRESS ) {
+				Ray ray = Camera.main.ScreenPointToRay (GetTouchPosition(playerCtrlIndex));
 				RaycastHit hit;
 
 				if( Physics.Raycast (ray, out hit, 200) ) {

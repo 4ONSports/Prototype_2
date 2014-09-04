@@ -11,18 +11,18 @@ public class InputManager : MonoBehaviour {
 	}
 
 	void Update() {
-		if (InputHandler.isTap == true) {
+		if (InputHandler.swipeInfo[0].isTap == true) {
 //			print ("Tap");
 			players.OnTap();
 			return;
 		}
 
-		if (InputHandler.swipe_state == InputHandler.SwipeState.END && !InputHandler.isTap) {
+		if (InputHandler.swipeInfo[0].swipe_state == InputHandler.SwipeState.END && !InputHandler.swipeInfo[0].isTap) {
 //			print ("Shoot");
-			players.OnSwipe (InputHandler.swipe_direction);
+			players.OnSwipe (InputHandler.swipeInfo[0].swipe_direction);
 		}
 
-		if (InputHandler.isSwiping) {
+		if (InputHandler.swipeInfo[0].isSwiping) {
 //			print ("Swiping");
 		}
 	}

@@ -19,6 +19,7 @@ public class Ball : MonoBehaviour {
 	
 	public void OnPossession (PlayerControl_Ball _pcBall, Collision2D _coll) {
 		this.rigidbody2D.velocity *= 0;
+		this.rigidbody2D.angularVelocity *= 0;
 		this.rigidbody2D.isKinematic = true;
 		ballOwner = _pcBall;
 		this.transform.parent = _pcBall.transform;
@@ -28,6 +29,8 @@ public class Ball : MonoBehaviour {
 
 	public void OnKick (Vector2 _direction) {
 		this.rigidbody2D.isKinematic = false;
+		this.rigidbody2D.velocity *= 0;
+		this.rigidbody2D.angularVelocity *= 0;
 		this.rigidbody2D.AddForce (_direction * 500);
 		if( ballOwner != null ) {
 			this.transform.parent = null;

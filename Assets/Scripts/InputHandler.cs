@@ -10,20 +10,13 @@ public class InputHandler : MonoBehaviour {
 		END,
 	}
 	
-	public int fingerTouchIndex = 1;
-	public int mouse2TouchIndex = 0;
-	public float maxTapTime = 100.0f;
-	public float minSwipeLength = 3.0f;
+	public static int fingerTouchIndex = 1;
+	public static int maxTouchFingers = 2;
+	public static int mouse2TouchIndex = 0;
+	public static float maxTapTime = 1.0f;
+	public static float minSwipeLength = 3.0f;
 	public static bool useTouch = false;
-	public static bool isSwiping = false;
-	public static bool isTap = false;
-	public static SwipeState swipe_state  = SwipeState.NONE;
-	public static float swipe_startTime  = 0.0f;
-	public static Vector2 swipe_startPos  = Vector2.zero;
-	public static Vector2 swipe_endPos  = Vector2.zero;
-	public static Vector2 swipe_direction  = Vector2.zero;
-	public static float swipe_duration  = 0.0f;
-	public static float swipe_length  = 0.0f;
+	public static SwipeInfo[] swipeInfo;
 	
 	//	private bool useTouch = false;
 	//	private bool isSwipe = false;
@@ -35,18 +28,29 @@ public class InputHandler : MonoBehaviour {
 		if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) {
 			useTouch = true;
 		}
+		else {
+			maxTouchFingers = 1;
+		}
+
+		swipeInfo = new SwipeInfo[maxTouchFingers];
+		for( int i=0; i<maxTouchFingers; ++i ) {
+			swipeInfo[i] = new SwipeInfo();
+			swipeInfo[i].swipe_state = SwipeState.NONE;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if( swipe_state == SwipeState.END )  {
-			swipe_state = SwipeState.NONE;
-			
-			swipe_startTime = 0.0f;
-			swipe_startPos = Vector2.zero;
-			swipe_direction = Vector2.zero;
-			swipe_duration = 0.0f;
-			swipe_length = 0.0f;
+		for( int i=0; i<maxTouchFingers; ++i ) {
+			if( swipeInfo[i].swipe_state == SwipeState.END )  {
+				swipeInfo[i].swipe_state = SwipeState.NONE;
+
+				swipeInfo[i].swipe_startTime = 0.0f;
+				swipeInfo[i].swipe_startPos = Vector2.zero;
+				swipeInfo[i].swipe_direction = Vector2.zero;
+				swipeInfo[i].swipe_duration = 0.0f;
+				swipeInfo[i].swipe_length = 0.0f;
+			}
 		}
 		
 		// Mouse Controls
@@ -54,97 +58,125 @@ public class InputHandler : MonoBehaviour {
 			Vector2 mousePos;
 			mousePos.x = Input.mousePosition.x;
 			mousePos.y = Input.mousePosition.y;
+			int ctrlIndex = 0;
 			
 			if( Input.GetMouseButtonDown(mouse2TouchIndex) ) {
-				swipe_state = SwipeState.BEGIN;
-				isSwiping = true;
-				swipe_startTime = Time.time;
-				swipe_startPos = mousePos;
+				swipeInfo[ctrlIndex].swipe_state = SwipeState.BEGIN;
+				swipeInfo[ctrlIndex].isSwiping = true;
+				swipeInfo[ctrlIndex].swipe_startTime = Time.time;
+				swipeInfo[ctrlIndex].swipe_startPos = mousePos;
 			}
 			else if( Input.GetMouseButtonUp(mouse2TouchIndex) ) {
-				swipe_state = SwipeState.END;
-				isSwiping = false;
-				swipe_endPos = mousePos;
+				swipeInfo[ctrlIndex].swipe_state = SwipeState.END;
+				swipeInfo[ctrlIndex].isSwiping = false;
+				swipeInfo[ctrlIndex].swipe_endPos = mousePos;
 				
-				swipe_duration = Time.time - swipe_startTime;
-				swipe_length = (mousePos - swipe_startPos).magnitude;
-				swipe_direction = mousePos - swipe_startPos;
-				swipe_direction.Normalize();
+				swipeInfo[ctrlIndex].swipe_duration = Time.time - swipeInfo[ctrlIndex].swipe_startTime;
+				swipeInfo[ctrlIndex].swipe_length = (mousePos - swipeInfo[ctrlIndex].swipe_startPos).magnitude;
+				swipeInfo[ctrlIndex].swipe_direction = mousePos - swipeInfo[ctrlIndex].swipe_startPos;
+				swipeInfo[ctrlIndex].swipe_direction.Normalize();
 
-				if( swipe_length < minSwipeLength && swipe_duration < maxTapTime ) {
-					isTap = true;
-					StartCoroutine(this.OnTapFrameReset());
+				if( swipeInfo[ctrlIndex].swipe_length < minSwipeLength && swipeInfo[ctrlIndex].swipe_duration < maxTapTime ) {
+					swipeInfo[ctrlIndex].isTap = true;
+					StartCoroutine(this.OnTapFrameReset(ctrlIndex));
 				}
 				else {
-					isTap = false;
+					swipeInfo[ctrlIndex].isTap = false;
 				}
 			}
 			else if( Input.GetMouseButton(mouse2TouchIndex) ) {
-				swipe_state = SwipeState.INPROGRESS;
-				swipe_direction = mousePos - swipe_startPos;
-				swipe_direction.Normalize();
+				swipeInfo[ctrlIndex].swipe_state = SwipeState.INPROGRESS;
+				swipeInfo[ctrlIndex].swipe_direction = mousePos - swipeInfo[ctrlIndex].swipe_startPos;
+				swipeInfo[ctrlIndex].swipe_direction.Normalize();
 			}
 		}
 		
 		// Touch Controls
 		if (useTouch && Input.touchCount > 0){
 			//foreach (Touch touch in Input.touches)
-			Touch touch;// = Input.GetTouch(0);
-			if( Input.touchCount == 1 ) {
-				touch = Input.GetTouch(0);
-			}
-			else {
-				touch = Input.GetTouch(fingerTouchIndex);
-			}
-			
-//			if( touch.position.x > (Screen.width/2) )
-			{
-				switch (touch.phase)
-				{
-				case TouchPhase.Began :
-					swipe_state = SwipeState.BEGIN;
-					isSwiping = true;
-					swipe_startTime = Time.time;
-					swipe_startPos = touch.position;
-					break;
-					
-				case TouchPhase.Canceled :
-					/* The touch is being canceled */
-					isSwiping = false;
-					swipe_state = SwipeState.NONE;
-					break;
-					
-				case TouchPhase.Ended :
-					swipe_state = SwipeState.END;
-					isSwiping = false;
-					
-					swipe_duration = Time.time - swipe_startTime;
-					swipe_endPos = touch.position;
-					swipe_length = (touch.position - swipe_startPos).magnitude;
-					swipe_direction = touch.position - swipe_startPos;
-					swipe_direction.Normalize();
-
-					if( swipe_length < minSwipeLength && swipe_duration < maxTapTime ) {
-						isTap = true;
-						StartCoroutine(this.OnTapFrameReset());
+			for( int i=0; i<maxTouchFingers; ++i ) {
+				if( i < Input.touchCount ) {
+					Touch touch = Input.GetTouch(i);
+					{
+						switch (touch.phase)
+						{
+						case TouchPhase.Began :
+							swipeInfo[i].swipe_state = SwipeState.BEGIN;
+							print ("Touch Index = "+i);
+							swipeInfo[i].isSwiping = true;
+							swipeInfo[i].swipe_startTime = Time.time;
+							swipeInfo[i].swipe_startPos = touch.position;
+							break;
+							
+						case TouchPhase.Canceled :
+							/* The touch is being canceled */
+							swipeInfo[i].isSwiping = false;
+							swipeInfo[i].swipe_state = SwipeState.NONE;
+							break;
+							
+						case TouchPhase.Ended :
+							swipeInfo[i].swipe_state = SwipeState.END;
+							swipeInfo[i].isSwiping = false;
+							
+							swipeInfo[i].swipe_duration = Time.time - swipeInfo[i].swipe_startTime;
+							swipeInfo[i].swipe_endPos = touch.position;
+							swipeInfo[i].swipe_length = (touch.position - swipeInfo[i].swipe_startPos).magnitude;
+							swipeInfo[i].swipe_direction = touch.position - swipeInfo[i].swipe_startPos;
+							swipeInfo[i].swipe_direction.Normalize();
+							
+							if( swipeInfo[i].swipe_length < minSwipeLength && swipeInfo[i].swipe_duration < maxTapTime ) {
+								swipeInfo[i].isTap = true;
+								StartCoroutine(this.OnTapFrameReset(i));
+							}
+							else {
+								swipeInfo[i].isTap = false;
+							}
+							break;
+							
+						case TouchPhase.Moved :
+							swipeInfo[i].swipe_state = SwipeState.INPROGRESS;
+							swipeInfo[i].swipe_direction = touch.position - swipeInfo[i].swipe_startPos;
+							swipeInfo[i].swipe_direction.Normalize();
+							break;
+						}
 					}
-					else {
-						isTap = false;
-					}
-					break;
-					
-				case TouchPhase.Moved :
-					swipe_state = SwipeState.INPROGRESS;
-					swipe_direction = touch.position - swipe_startPos;
-					swipe_direction.Normalize();
-					break;
 				}
 			}
 		}
 	}
 
-	private IEnumerator OnTapFrameReset() {
+	public static void RefreshStart ( int ctrlIndex ) {
+		// Mouse Controls
+		if (!useTouch) {
+			Vector2 mousePos;
+			mousePos.x = Input.mousePosition.x;
+			mousePos.y = Input.mousePosition.y;
+
+			swipeInfo[ctrlIndex].swipe_state = SwipeState.BEGIN;
+			swipeInfo[ctrlIndex].isSwiping = true;
+			swipeInfo[ctrlIndex].swipe_startPos = mousePos;
+		}
+		
+		// Touch Controls
+		if (useTouch){
+			Touch touch = Input.GetTouch(ctrlIndex);
+			
+			swipeInfo[ctrlIndex].swipe_state = SwipeState.BEGIN;
+			swipeInfo[ctrlIndex].isSwiping = true;
+			swipeInfo[ctrlIndex].swipe_startPos = touch.position;
+		}
+	}
+	
+	public static void ReorderSwipeInfo () {
+		if( Input.touchCount>0 ) {
+			SwipeInfo tempSwipeInfo = swipeInfo [0];
+			swipeInfo[0] = swipeInfo [1];
+			swipeInfo[1] = tempSwipeInfo;
+		}
+	}
+	
+	private IEnumerator OnTapFrameReset( int _ctrlIndex ) {
 		yield return null;
-		isTap = false;
+		swipeInfo[_ctrlIndex].isTap = false;
 	}
 }
