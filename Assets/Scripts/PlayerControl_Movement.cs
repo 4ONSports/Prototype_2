@@ -95,16 +95,4 @@ public class PlayerControl_Movement : MonoBehaviour {
 			}
 		}
 	}
-	
-	void OnGUI() {
-		GUI.Box(new Rect(10,10,200,210), "Debug Menu");
-		
-		if(GUI.Button(new Rect(20,40,160,40), "Toggle Y Move")) {
-			allowMovement_Y = !allowMovement_Y;
-		}
-		
-		if(GUI.Button(new Rect(20,80,160,40), "Toggle Move when with ball")) {
-			noMovementWhenHasBall = !noMovementWhenHasBall;
-		}
-	}
 }
