@@ -11,8 +11,8 @@ public class InputManagerThree : MonoBehaviour {
 	}
 	
 	void Update() {
-		if (InputHandler.isTap == true) {
-			ball.OnTap(Camera.main.ScreenToWorldPoint(new Vector3(InputHandler.swipe_startPos.x,InputHandler.swipe_startPos.y,-Camera.main.transform.position.z)));
+		if (InputHandler.swipeInfo[0].isTap == true) {
+			ball.OnTap(Camera.main.ScreenToWorldPoint(new Vector3(InputHandler.swipeInfo[0].swipe_startPos.x,InputHandler.swipeInfo[0].swipe_startPos.y,-Camera.main.transform.position.z)));
 			return;
 		}
 	}

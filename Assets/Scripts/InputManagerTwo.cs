@@ -3,7 +3,7 @@ using System.Collections;
 
 public class InputManagerTwo : MonoBehaviour {
 
-	[SerializeField] private BallTestTwo ball = null;
+	[SerializeField] private BallTestThree ball = null;
 	private InputHandler ih = null;
 	
 	void Start() {
