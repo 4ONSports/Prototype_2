@@ -12,7 +12,7 @@ public class LookAtTarget : MonoBehaviour {
 	void Update () {
 		if(!targetToLookAt) return;
 		transform.LookAt (targetToLookAt);
-		transform.position = Vector3.Lerp(transform.position, new Vector3(Input.acceleration.x,Input.acceleration.y,transform.position.z),10);
+		//transform.position = Vector3.Lerp(transform.position, new Vector3(Input.acceleration.x,Input.acceleration.y,transform.position.z),10);
 	
 	}
 

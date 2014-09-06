@@ -14,7 +14,6 @@ public class Team : MonoBehaviour {
 	private PlayerControl_Movement[] pc_mvmnts;
 	private int lastPlayerWithBallIndex = -1;
 
-	// Use this for initialization
 	void Start () {
 		pc_balls = new PlayerControl_Ball[players.Length];
 		pc_mvmnts = new PlayerControl_Movement[players.Length];
@@ -22,10 +21,6 @@ public class Team : MonoBehaviour {
 			pc_balls[i] = players[i].GetComponent<PlayerControl_Ball>();
 			pc_mvmnts[i] = players[i].GetComponent<PlayerControl_Movement>();
 		}
-	}
-	
-	// Update is called once per frame
-	void Update () {
 	}
 	
 	public void EnableAllPlayers () {

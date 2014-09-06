@@ -753,6 +753,45 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1284697943}
   m_RootOrder: 4
+--- !u!1 &506578317
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 506578318}
+  - 61: {fileID: 506578319}
+  m_Layer: 0
+  m_Name: Goal
+  m_TagString: Untagged
+  m_Icon: {fileID: 120240766, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &506578318
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 506578317}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: .641338825, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 934044420}
+  m_RootOrder: 3
+--- !u!61 &506578319
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 506578317}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Size: {x: 2, y: 1}
+  m_Center: {x: 0, y: 0}
 --- !u!1 &518657975
 GameObject:
   m_ObjectHideFlags: 0
@@ -1265,6 +1304,7 @@ Transform:
   - {fileID: 912952302}
   - {fileID: 1257209769}
   - {fileID: 615685491}
+  - {fileID: 506578318}
   m_Father: {fileID: 1574602908}
   m_RootOrder: 2
 --- !u!1 &972260612
@@ -1848,6 +1888,10 @@ Prefab:
       propertyPath: orthographic
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: c1a184fa28eacee45b95bc08cc3601b9, type: 2}
+      propertyPath: targetToLookAt
+      value: 
+      objectReference: {fileID: 1574602908}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c1a184fa28eacee45b95bc08cc3601b9, type: 2}
   m_RootGameObject: {fileID: 1739716982}
@@ -3208,7 +3252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7de6a25a17fef7418d2fd4c2a21af81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetToLookAt: {fileID: 0}
+  targetToLookAt: {fileID: 1574602908}
 --- !u!81 &1739716984
 AudioListener:
   m_ObjectHideFlags: 0
