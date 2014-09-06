@@ -8,6 +8,7 @@ public class PlayerControl_Movement : MonoBehaviour {
 	public bool allowMovement_Y = false;
 	public bool noMovementWhenHasBall = true;
 	public int playerCtrlIndex = -1;
+	[SerializeField] public bool disable = false;
 
 	private PlayerControl_Ball pcBall = null;
 	private bool playerCtrlIndexReordered = false;
@@ -68,11 +69,11 @@ public class PlayerControl_Movement : MonoBehaviour {
 				playerCtrlIndexReordered = false;
 			}
 		}
-
-		if( pcBall.hasABall && noMovementWhenHasBall ) {
+		
+		if( disable || (pcBall.hasABall && noMovementWhenHasBall) ) {
 			return;
 		}
-
+		
 		if( playerCtrlIndex<0 ) {
 			return;
 		}

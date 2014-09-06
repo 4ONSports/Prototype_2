@@ -969,6 +969,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 247531805}
+  - 114: {fileID: 247531806}
   m_Layer: 0
   m_Name: TeamA
   m_TagString: Untagged
@@ -993,6 +994,22 @@ Transform:
   - {fileID: 1345651159}
   m_Father: {fileID: 542557075}
   m_RootOrder: 0
+--- !u!114 &247531806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 247531804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644e754089469e04e96a97975d745eb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players:
+  - {fileID: 2132050972}
+  - {fileID: 1049921618}
+  - {fileID: 1910694381}
+  isInPossession: 0
 --- !u!1 &323185464
 GameObject:
   m_ObjectHideFlags: 0
@@ -3119,6 +3136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 0}
   hasABall: 0
+  disable: 0
   minSwipeDistanceToShoot_Touch: 25
   minSwipeDistanceToShoot_Mouse: 25
   minSwipeDistanceToShoot: 25
@@ -3141,6 +3159,7 @@ MonoBehaviour:
   allowMovement_Y: 0
   noMovementWhenHasBall: 1
   playerCtrlIndex: -1
+  disable: 0
 --- !u!58 &900116998
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3634,6 +3653,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 0}
   hasABall: 0
+  disable: 0
   minSwipeDistanceToShoot_Touch: 25
   minSwipeDistanceToShoot_Mouse: 25
   minSwipeDistanceToShoot: 25
@@ -3656,6 +3676,7 @@ MonoBehaviour:
   allowMovement_Y: 0
   noMovementWhenHasBall: 1
   playerCtrlIndex: -1
+  disable: 0
 --- !u!58 &972260615
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3807,6 +3828,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 0}
   hasABall: 0
+  disable: 0
   minSwipeDistanceToShoot_Touch: 25
   minSwipeDistanceToShoot_Mouse: 25
   minSwipeDistanceToShoot: 25
@@ -3829,6 +3851,7 @@ MonoBehaviour:
   allowMovement_Y: 0
   noMovementWhenHasBall: 1
   playerCtrlIndex: -1
+  disable: 0
 --- !u!58 &1049921621
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4659,7 +4682,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1187729322}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.687764764, y: -3.86172104, z: 0}
+  m_LocalPosition: {x: -.0145408735, y: -3.71175003, z: 0}
   m_LocalScale: {x: .300000012, y: .300000012, z: .300000012}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5513,6 +5536,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 0}
   hasABall: 0
+  disable: 0
   minSwipeDistanceToShoot_Touch: 25
   minSwipeDistanceToShoot_Mouse: 25
   minSwipeDistanceToShoot: 25
@@ -5535,6 +5559,7 @@ MonoBehaviour:
   allowMovement_Y: 0
   noMovementWhenHasBall: 1
   playerCtrlIndex: -1
+  disable: 0
 --- !u!58 &1345651162
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5752,6 +5777,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1389712904}
+  - 114: {fileID: 1389712905}
   m_Layer: 0
   m_Name: TeamB
   m_TagString: Untagged
@@ -5776,6 +5802,22 @@ Transform:
   - {fileID: 900116995}
   m_Father: {fileID: 542557075}
   m_RootOrder: 1
+--- !u!114 &1389712905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1389712903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644e754089469e04e96a97975d745eb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players:
+  - {fileID: 1819853608}
+  - {fileID: 972260612}
+  - {fileID: 1699728804}
+  isInPossession: 0
 --- !u!1001 &1421136536
 Prefab:
   m_ObjectHideFlags: 0
@@ -6449,6 +6491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 0}
   hasABall: 0
+  disable: 0
   minSwipeDistanceToShoot_Touch: 25
   minSwipeDistanceToShoot_Mouse: 25
   minSwipeDistanceToShoot: 25
@@ -6471,6 +6514,7 @@ MonoBehaviour:
   allowMovement_Y: 0
   noMovementWhenHasBall: 1
   playerCtrlIndex: -1
+  disable: 0
 --- !u!58 &1527964658
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6890,6 +6934,62 @@ Transform:
   - {fileID: 595781113}
   m_Father: {fileID: 0}
   m_RootOrder: 11
+--- !u!1 &1638356627
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1638356629}
+  - 114: {fileID: 1638356628}
+  - 114: {fileID: 1638356630}
+  m_Layer: 0
+  m_Name: GameMode
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1638356628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1638356627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f23e264e7b5630d418f6196ed164ec44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numOfGoalsToWin: 3
+  goalCount: 
+  teams:
+  - {fileID: 247531806}
+  - {fileID: 1389712905}
+--- !u!4 &1638356629
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1638356627}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+--- !u!114 &1638356630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1638356627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bcb842c90ca3514ab265a010ea574e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1640704499
 GameObject:
   m_ObjectHideFlags: 0
@@ -7093,6 +7193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 0}
   hasABall: 0
+  disable: 0
   minSwipeDistanceToShoot_Touch: 25
   minSwipeDistanceToShoot_Mouse: 25
   minSwipeDistanceToShoot: 25
@@ -7115,6 +7216,7 @@ MonoBehaviour:
   allowMovement_Y: 0
   noMovementWhenHasBall: 1
   playerCtrlIndex: -1
+  disable: 0
 --- !u!58 &1699728807
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7762,6 +7864,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 0}
   hasABall: 0
+  disable: 0
   minSwipeDistanceToShoot_Touch: 25
   minSwipeDistanceToShoot_Mouse: 25
   minSwipeDistanceToShoot: 25
@@ -7784,6 +7887,7 @@ MonoBehaviour:
   allowMovement_Y: 0
   noMovementWhenHasBall: 1
   playerCtrlIndex: -1
+  disable: 0
 --- !u!58 &1819853611
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7995,6 +8099,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 0}
   hasABall: 0
+  disable: 0
   minSwipeDistanceToShoot_Touch: 25
   minSwipeDistanceToShoot_Mouse: 25
   minSwipeDistanceToShoot: 25
@@ -8017,6 +8122,7 @@ MonoBehaviour:
   allowMovement_Y: 0
   noMovementWhenHasBall: 1
   playerCtrlIndex: -1
+  disable: 0
 --- !u!58 &1882371320
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8152,6 +8258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 0}
   hasABall: 0
+  disable: 0
   minSwipeDistanceToShoot_Touch: 25
   minSwipeDistanceToShoot_Mouse: 25
   minSwipeDistanceToShoot: 25
@@ -8174,6 +8281,7 @@ MonoBehaviour:
   allowMovement_Y: 0
   noMovementWhenHasBall: 1
   playerCtrlIndex: -1
+  disable: 0
 --- !u!58 &1910694384
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -9246,6 +9354,7 @@ MonoBehaviour:
   allowMovement_Y: 0
   noMovementWhenHasBall: 1
   playerCtrlIndex: -1
+  disable: 0
 --- !u!114 &2132050978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9260,6 +9369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 0}
   hasABall: 0
+  disable: 0
   minSwipeDistanceToShoot_Touch: 25
   minSwipeDistanceToShoot_Mouse: 25
   minSwipeDistanceToShoot: 25
