@@ -8,6 +8,7 @@ public class PlayerControl_Movement : MonoBehaviour {
 	public bool allowMovement_Y = false;
 	public bool noMovementWhenHasBall = true;
 	public int playerCtrlIndex = -1;
+	public float playerMovementSpeed = 5.0f;
 	[SerializeField] public bool disable = false;
 
 	private PlayerControl_Ball pcBall = null;
@@ -41,9 +42,18 @@ public class PlayerControl_Movement : MonoBehaviour {
 			// bug fix for when touch 0 is removed
 			if( InputHandler.swipeInfo[i].swipe_state == InputHandler.SwipeState.END ) {
 				if( playerCtrlIndex == i ) {
-					pcBall.CheckForShoot(playerCtrlIndex);
-					playerCtrlIndex = -1;
-					playerSelect = false;
+					if( pcBall.hasABall /*&& playerSelect*/ ) {
+						Debug.Log ("Shooting");
+						pcBall.CheckForShoot(playerCtrlIndex);
+						playerCtrlIndex = -1;
+						playerSelect = false;
+					}
+					else if( !pcBall.hasABall /*&& playerSelect*/ ) {
+						Debug.Log ("Moving");
+						this.rigidbody2D.velocity *= 0;
+						this.rigidbody2D.angularVelocity *= 0;
+						this.rigidbody2D.AddForce (InputHandler.swipeInfo[playerCtrlIndex].swipe_direction * playerMovementSpeed);
+					}
 				}
 				else if( i==0 && playerCtrlIndex>0 ) {
 					--playerCtrlIndex;
@@ -83,17 +93,18 @@ public class PlayerControl_Movement : MonoBehaviour {
 //		}
 
 		if( playerSelect ) {
-			if( InputHandler.swipeInfo[playerCtrlIndex].swipe_state == InputHandler.SwipeState.INPROGRESS ) {
-				Ray ray = Camera.main.ScreenPointToRay (GetTouchPosition(playerCtrlIndex));
-				RaycastHit hit;
-
-				if( Physics.Raycast (ray, out hit, 200) ) {
-					Vector3 tempPos = transform.position;
-					tempPos.x = (allowMovement_X)? hit.point.x: tempPos.x;
-					tempPos.y = (allowMovement_Y)? hit.point.y: tempPos.y;
-					transform.position = tempPos;
-				}
-			}
+//			//Move
+//			if( InputHandler.swipeInfo[playerCtrlIndex].swipe_state == InputHandler.SwipeState.INPROGRESS ) {
+//				Ray ray = Camera.main.ScreenPointToRay (GetTouchPosition(playerCtrlIndex));
+//				RaycastHit hit;
+//
+//				if( Physics.Raycast (ray, out hit, 200) ) {
+//					Vector3 tempPos = transform.position;
+//					tempPos.x = (allowMovement_X)? hit.point.x: tempPos.x;
+//					tempPos.y = (allowMovement_Y)? hit.point.y: tempPos.y;
+//					transform.position = tempPos;
+//				}
+//			}
 		}
 	}
 }
