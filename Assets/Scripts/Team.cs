@@ -1,18 +1,36 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum TeamSide {
+	SIDE_HOME, //0 is always home, blue
+	SIDE_AWAY, //1 is always away, red
+	COUNT
+}
+
 public class Team : MonoBehaviour {
-	public enum TeamSide {
-		SIDE_HOME,
-		SIDE_AWAY,
-		COUNT
-	}
+
+	public TeamSide side = TeamSide.SIDE_HOME;
 	public GameObject[] players;
 	public bool isInPossession = false;
-	
+	[SerializeField] private int goalKeeperIndex = 0;
+	public Goal teamGoal = null;
+
 	private PlayerControl_Ball[] pc_balls;
 	private PlayerControl_Movement[] pc_mvmnts;
 	private int lastPlayerWithBallIndex = -1;
+	private int score = 0;
+	private GameObject goalKeeper;
+
+	public int Score
+	{
+		get{return score;}
+		set{score = value;}
+	}
+
+	public bool IsMyGoalScore
+	{
+		get {return teamGoal.GetScoredOnce;}
+	}
 
 	void Start () {
 		pc_balls = new PlayerControl_Ball[players.Length];
@@ -21,6 +39,7 @@ public class Team : MonoBehaviour {
 			pc_balls[i] = players[i].GetComponent<PlayerControl_Ball>();
 			pc_mvmnts[i] = players[i].GetComponent<PlayerControl_Movement>();
 		}
+		goalKeeper = players [goalKeeperIndex];
 	}
 	
 	public void EnableAllPlayers () {
@@ -59,5 +78,15 @@ public class Team : MonoBehaviour {
 				pc_mvmnts[i].disable = true;
 			}
 		}
+	}
+
+	public void AddScore()  {
+		score += 1;
+	}
+
+	public void GiveBallToGoalKeeper(GameObject _ball) {
+		EnableAllPlayers ();
+		_ball.rigidbody2D.velocity *= 0;
+		_ball.transform.position = goalKeeper.transform.position;
 	}
 }

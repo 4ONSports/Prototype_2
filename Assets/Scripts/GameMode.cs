@@ -5,9 +5,8 @@ public class GameMode : MonoBehaviour {
 	public int numOfGoalsToWin = 0;
 	public int[] goalCount;
 	public Team[] teams;
-	
-	void Start () {
-	}
+
+	public TextMesh scoreText = null;
 	
 	void Update () {
 		_OnUpdate ();
@@ -18,6 +17,27 @@ public class GameMode : MonoBehaviour {
 		if( GameEvents.GetEvent(GameEvents.GameEvent.EVT_PLAYER_POSSESS_BALL) ) {
 			_OnPlayerBallPossession();
 		}
+		if( GameEvents.GetEvent(GameEvents.GameEvent.EVT_GOAL_SCORED)) {
+			_OnGoalScored();
+		}
+
+	}
+
+	public Team GetOppositeTeam (Team _team) {
+		if(_team.side == TeamSide.SIDE_HOME)
+		return teams[1];
+		else
+		return teams[0];
+	}
+
+	public void UpdateScoreText(int scoreHome, int scoreAway) {
+		if(!scoreText)return;
+		string h = "";
+		string t = "";
+		if(scoreHome<10)h+= "0";
+		t+= "  ";
+		if(scoreAway<10)t+= "0";
+		this.scoreText.text = h + scoreHome + t + scoreAway;
 	}
 	
 	protected virtual void _OnUpdate() {

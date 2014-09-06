@@ -3,10 +3,10 @@ using System.Collections;
 
 public class GameMode_Default : GameMode {
 
-//	void Start() {
-//		numOfGoalsToWin = 3;
-//		goalCount = new int[(int)Team.TeamSide.COUNT];
-//	}
+	void Start() {
+		numOfGoalsToWin = 3;
+		goalCount = new int[(int)TeamSide.COUNT];
+	}
 	
 	protected override void _OnUpdate () {
 //		for( int i=0; i<teams.Length; ++i ) {
@@ -18,12 +18,11 @@ public class GameMode_Default : GameMode {
 	}
 	
 	protected override void _OnPlayerShoot () {
-//		// Disable player until other team has possession of ball
-//		for( int i=0; i<teams.Length; ++i ) {
-//			if( teams[i].isInPossession ) {
-//				teams[i].DisableLastPlayerWithBall();
-//			}
-//		}
+		for( int i=0; i<teams.Length; ++i ) {
+			if( teams[i].isInPossession ) {
+				teams[i].DisableLastPlayerWithBall();
+			}
+		}
 	}
 	
 	protected override void _OnPlayerBallPossession() {
@@ -33,8 +32,17 @@ public class GameMode_Default : GameMode {
 	}
 	
 	protected override void _OnGoalScored () {
+		for( int i=0; i<teams.Length; ++i ) {
+			if(teams[i].IsMyGoalScore){
+				Team t = teams[i];
+				GetOppositeTeam(t).AddScore();
+				t.GiveBallToGoalKeeper(t.teamGoal.GetBall);
+			}
+		}
+		UpdateScoreText (teams [0].Score, teams [1].Score);
 	}
 	
 	void ResetPositions () {
+
 	}
 }

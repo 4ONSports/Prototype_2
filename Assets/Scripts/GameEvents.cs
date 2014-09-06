@@ -45,7 +45,7 @@ public class GameEvents : MonoBehaviour {
 			eventState[i] = eventStateBuffer[i];
 		}
 	}
-
+	
 	public static void TriggerEvent( GameEvent _evt ) {
 		// assert _evt < GameEvent.COUNT
 		eventStateBuffer[(int)_evt] = true;
