@@ -178,30 +178,26 @@ public class InputHandler : MonoBehaviour {
 	public static void RefreshStart ( int ctrlIndex ) {
 		// Mouse Controls
 		if (!useTouch) {
-			Vector2 mousePos;
-			mousePos.x = Input.mousePosition.x;
-			mousePos.y = Input.mousePosition.y;
+			if( swipeInfo[ctrlIndex].swipe_state == SwipeState.INPROGRESS ) {
+				Vector2 mousePos;
+				mousePos.x = Input.mousePosition.x;
+				mousePos.y = Input.mousePosition.y;
 
-			swipeInfo[ctrlIndex].swipe_state = SwipeState.BEGIN;
-			swipeInfo[ctrlIndex].isSwiping = true;
-			swipeInfo[ctrlIndex].swipe_startPos = mousePos;
+				swipeInfo[ctrlIndex].swipe_state = SwipeState.BEGIN;
+				swipeInfo[ctrlIndex].isSwiping = true;
+				swipeInfo[ctrlIndex].swipe_startPos = mousePos;
+			}
 		}
 		
 		// Touch Controls
 		if (useTouch){
-			Touch touch = Input.GetTouch(ctrlIndex);
-			
-			swipeInfo[ctrlIndex].swipe_state = SwipeState.BEGIN;
-			swipeInfo[ctrlIndex].isSwiping = true;
-			swipeInfo[ctrlIndex].swipe_startPos = touch.position;
-		}
-	}
-	
-	public static void ReorderSwipeInfo () {
-		if( Input.touchCount>0 ) {
-			SwipeInfo tempSwipeInfo = swipeInfo [0];
-			swipeInfo[0] = swipeInfo [1];
-			swipeInfo[1] = tempSwipeInfo;
+			if( swipeInfo[ctrlIndex].swipe_state == SwipeState.INPROGRESS ) {
+				Touch touch = Input.GetTouch(ctrlIndex);
+				
+				swipeInfo[ctrlIndex].swipe_state = SwipeState.BEGIN;
+				swipeInfo[ctrlIndex].isSwiping = true;
+				swipeInfo[ctrlIndex].swipe_startPos = touch.position;
+			}
 		}
 	}
 	

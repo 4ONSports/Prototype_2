@@ -142,7 +142,7 @@ Transform:
   - {fileID: 1350490658}
   - {fileID: 412730651}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!1 &15982681
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,6 +449,10 @@ Prefab:
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_LocalScale.z
       value: .244047001
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
@@ -1875,7 +1879,7 @@ Transform:
   - {fileID: 247531805}
   - {fileID: 1389712904}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1 &573583499
 GameObject:
   m_ObjectHideFlags: 0
@@ -3029,6 +3033,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: .244047001
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
   m_RootGameObject: {fileID: 900116994}
@@ -3105,7 +3113,7 @@ GameObject:
   - 114: {fileID: 900116996}
   m_Layer: 0
   m_Name: TeamB_Player5
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3159,7 +3167,10 @@ MonoBehaviour:
   allowMovement_Y: 0
   noMovementWhenHasBall: 1
   playerCtrlIndex: -1
+  playerMovementSpeed: 5
+  tempFriction: 10
   disable: 0
+  forceAdded: 0
 --- !u!58 &900116998
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3364,7 +3375,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!1 &920458572
 GameObject:
   m_ObjectHideFlags: 0
@@ -3632,9 +3643,10 @@ GameObject:
   - 58: {fileID: 972260615}
   - 114: {fileID: 972260614}
   - 114: {fileID: 972260613}
+  - 50: {fileID: 972260619}
   m_Layer: 0
   m_Name: TeamB_Player2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3676,7 +3688,10 @@ MonoBehaviour:
   allowMovement_Y: 0
   noMovementWhenHasBall: 1
   playerCtrlIndex: -1
+  playerMovementSpeed: 150
+  tempFriction: 10
   disable: 0
+  forceAdded: 0
 --- !u!58 &972260615
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3685,7 +3700,7 @@ CircleCollider2D:
   m_PrefabInternal: {fileID: 1045349117}
   m_GameObject: {fileID: 972260612}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1735d0bea2c052d43816f82f2e639585, type: 2}
   m_IsTrigger: 0
   m_Radius: .50000006
   m_Center: {x: 5.96046448e-08, y: 0}
@@ -3725,11 +3740,26 @@ Transform:
   m_PrefabInternal: {fileID: 1045349117}
   m_GameObject: {fileID: 972260612}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.20000005, z: -2.63229012e-05}
+  m_LocalPosition: {x: -.753222525, y: 4.08406162, z: -2.63229012e-05}
   m_LocalScale: {x: .600000024, y: .600000024, z: .244047463}
   m_Children: []
   m_Father: {fileID: 1389712904}
   m_RootOrder: 1
+--- !u!50 &972260619
+Rigidbody2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 972260612}
+  m_Mass: 1
+  m_LinearDrag: .5
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_FixedAngle: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
 --- !u!1001 &1045349117
 Prefab:
   m_ObjectHideFlags: 0
@@ -3739,11 +3769,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -.753222525
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.20000005
+      value: 4.08406162
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3789,6 +3819,18 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: .600000024
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: playerMovementSpeed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 1735d0bea2c052d43816f82f2e639585, type: 2}
+    - target: {fileID: 100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
   m_RootGameObject: {fileID: 972260612}
@@ -3807,9 +3849,10 @@ GameObject:
   - 58: {fileID: 1049921621}
   - 114: {fileID: 1049921620}
   - 114: {fileID: 1049921619}
+  - 50: {fileID: 1049921625}
   m_Layer: 0
   m_Name: TeamA_Player2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3851,7 +3894,10 @@ MonoBehaviour:
   allowMovement_Y: 0
   noMovementWhenHasBall: 1
   playerCtrlIndex: -1
+  playerMovementSpeed: 150
+  tempFriction: 10
   disable: 0
+  forceAdded: 0
 --- !u!58 &1049921621
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3860,7 +3906,7 @@ CircleCollider2D:
   m_PrefabInternal: {fileID: 1421136536}
   m_GameObject: {fileID: 1049921618}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1735d0bea2c052d43816f82f2e639585, type: 2}
   m_IsTrigger: 0
   m_Radius: .50000006
   m_Center: {x: 5.96046448e-08, y: 0}
@@ -3900,11 +3946,26 @@ Transform:
   m_PrefabInternal: {fileID: 1421136536}
   m_GameObject: {fileID: 1049921618}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.20000005, z: -2.63229012e-05}
+  m_LocalPosition: {x: 1.7588079, y: -2.20000005, z: -2.63229012e-05}
   m_LocalScale: {x: .600000024, y: .600000024, z: .244047463}
   m_Children: []
   m_Father: {fileID: 247531805}
   m_RootOrder: 1
+--- !u!50 &1049921625
+Rigidbody2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1049921618}
+  m_Mass: 1
+  m_LinearDrag: .5
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_FixedAngle: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
 --- !u!1001 &1059802035
 Prefab:
   m_ObjectHideFlags: 0
@@ -3914,11 +3975,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.57356119
+      value: -1.82938778
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .432533741
+      value: -2.15771055
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3950,7 +4011,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_LocalScale.y
@@ -3963,6 +4024,14 @@ Prefab:
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_LocalScale.z
       value: .244047001
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: playerMovementSpeed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
@@ -4490,11 +4559,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.5
+      value: 1.65053368
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -.23149538
+      value: .59675169
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -4530,7 +4599,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_LocalScale.x
@@ -4543,6 +4612,14 @@ Prefab:
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_LocalScale.z
       value: .244047001
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: playerMovementSpeed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
@@ -4757,6 +4834,108 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1187729322}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1192191670
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100030, guid: b2652c9cb460cc6469cdb2e04c8c66a6, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1192191676}
+  - 33: {fileID: 1192191675}
+  - 23: {fileID: 1192191674}
+  - 58: {fileID: 1192191673}
+  - 50: {fileID: 1192191672}
+  - 114: {fileID: 1192191671}
+  m_Layer: 0
+  m_Name: Ball_2
+  m_TagString: Ball
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1192191671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: b2652c9cb460cc6469cdb2e04c8c66a6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1192191670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed98fd8e212ed2a4ab6a3e6b85920a76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linerenderer: {fileID: 12000000, guid: d8c31e0ab6363a3488afa0c8258a3c5a, type: 2}
+--- !u!50 &1192191672
+Rigidbody2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5000002, guid: b2652c9cb460cc6469cdb2e04c8c66a6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1192191670}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_FixedAngle: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+--- !u!58 &1192191673
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5800010, guid: b2652c9cb460cc6469cdb2e04c8c66a6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1192191670}
+  m_Enabled: 1
+  m_Material: {fileID: 6200000, guid: 9c1d9ece793c0544ba28bbc2040d92fa, type: 2}
+  m_IsTrigger: 0
+  m_Radius: .50000006
+  m_Center: {x: 5.96046448e-08, y: 0}
+--- !u!23 &1192191674
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 2300010, guid: b2652c9cb460cc6469cdb2e04c8c66a6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1192191670}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: 25d1081e3fd1cf34cb0b6e3f879e2e44, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &1192191675
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 3300010, guid: b2652c9cb460cc6469cdb2e04c8c66a6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1192191670}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1192191676
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400030, guid: b2652c9cb460cc6469cdb2e04c8c66a6, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1192191670}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.750042498, y: 3.83513498, z: 0}
+  m_LocalScale: {x: .300000012, y: .300000012, z: .300000012}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
 --- !u!1 &1207115536
 GameObject:
   m_ObjectHideFlags: 0
@@ -5167,7 +5346,7 @@ Transform:
   - {fileID: 504469205}
   - {fileID: 427776489}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!1 &1291931275
 GameObject:
   m_ObjectHideFlags: 0
@@ -5314,6 +5493,18 @@ Prefab:
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_LocalScale.y
       value: .600000024
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: playerMovementSpeed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 1735d0bea2c052d43816f82f2e639585, type: 2}
+    - target: {fileID: 100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
@@ -5505,7 +5696,7 @@ GameObject:
   - 114: {fileID: 1345651160}
   m_Layer: 0
   m_Name: TeamA_Player5
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5559,7 +5750,10 @@ MonoBehaviour:
   allowMovement_Y: 0
   noMovementWhenHasBall: 1
   playerCtrlIndex: -1
+  playerMovementSpeed: 5
+  tempFriction: 10
   disable: 0
+  forceAdded: 0
 --- !u!58 &1345651162
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5827,7 +6021,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.7588079
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_LocalPosition.y
@@ -5872,6 +6066,18 @@ Prefab:
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_LocalScale.x
       value: .600000024
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: playerMovementSpeed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 1735d0bea2c052d43816f82f2e639585, type: 2}
+    - target: {fileID: 100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
@@ -6063,108 +6269,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1450168714}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1452460055
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100026, guid: b2652c9cb460cc6469cdb2e04c8c66a6, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1452460056}
-  - 33: {fileID: 1452460061}
-  - 23: {fileID: 1452460060}
-  - 58: {fileID: 1452460059}
-  - 50: {fileID: 1452460058}
-  - 114: {fileID: 1452460057}
-  m_Layer: 0
-  m_Name: Ball_2
-  m_TagString: Ball
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1452460056
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400026, guid: b2652c9cb460cc6469cdb2e04c8c66a6, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1452460055}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .312234998, y: -3.86172104, z: 0}
-  m_LocalScale: {x: .300000012, y: .300000012, z: .300000012}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
---- !u!114 &1452460057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400002, guid: b2652c9cb460cc6469cdb2e04c8c66a6,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1452460055}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed98fd8e212ed2a4ab6a3e6b85920a76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  linerenderer: {fileID: 0}
---- !u!50 &1452460058
-Rigidbody2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 5000000, guid: b2652c9cb460cc6469cdb2e04c8c66a6,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1452460055}
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
-  m_GravityScale: 0
-  m_FixedAngle: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
---- !u!58 &1452460059
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 5800008, guid: b2652c9cb460cc6469cdb2e04c8c66a6,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1452460055}
-  m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: 9c1d9ece793c0544ba28bbc2040d92fa, type: 2}
-  m_IsTrigger: 0
-  m_Radius: .50000006
-  m_Center: {x: 5.96046448e-08, y: 0}
---- !u!23 &1452460060
-Renderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 2300008, guid: b2652c9cb460cc6469cdb2e04c8c66a6,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1452460055}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
-  m_Materials:
-  - {fileID: 2100000, guid: bb5d2a6ea3002c74da859d28ca55287d, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
---- !u!33 &1452460061
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 3300008, guid: b2652c9cb460cc6469cdb2e04c8c66a6,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1452460055}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1453739615
 GameObject:
   m_ObjectHideFlags: 0
@@ -6458,13 +6562,14 @@ GameObject:
   - 58: {fileID: 1527964658}
   - 114: {fileID: 1527964657}
   - 114: {fileID: 1527964656}
+  - 50: {fileID: 1527964661}
   m_Layer: 0
   m_Name: TeamB_Player4
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1527964655
 Transform:
   m_ObjectHideFlags: 0
@@ -6472,7 +6577,7 @@ Transform:
   m_PrefabInternal: {fileID: 1184735950}
   m_GameObject: {fileID: 1527964654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5, y: -.23149538, z: -2.59999997e-05}
+  m_LocalPosition: {x: 1.65053368, y: .59675169, z: -2.59999997e-05}
   m_LocalScale: {x: .600000024, y: .600000024, z: .244047001}
   m_Children: []
   m_Father: {fileID: 1389712904}
@@ -6514,7 +6619,10 @@ MonoBehaviour:
   allowMovement_Y: 0
   noMovementWhenHasBall: 1
   playerCtrlIndex: -1
+  playerMovementSpeed: 150
+  tempFriction: 10
   disable: 0
+  forceAdded: 0
 --- !u!58 &1527964658
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6556,6 +6664,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1184735950}
   m_GameObject: {fileID: 1527964654}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!50 &1527964661
+Rigidbody2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1527964654}
+  m_Mass: 1
+  m_LinearDrag: .5
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_FixedAngle: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
 --- !u!1 &1533101398
 GameObject:
   m_ObjectHideFlags: 0
@@ -6654,11 +6777,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: .799458206
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4
+      value: 4.10295868
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -6703,6 +6826,18 @@ Prefab:
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_LocalScale.y
       value: .600000024
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: playerMovementSpeed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 1735d0bea2c052d43816f82f2e639585, type: 2}
+    - target: {fileID: 100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
@@ -6933,7 +7068,7 @@ Transform:
   - {fileID: 602543164}
   - {fileID: 595781113}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
 --- !u!1 &1638356627
 GameObject:
   m_ObjectHideFlags: 0
@@ -6978,7 +7113,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
 --- !u!114 &1638356630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7158,7 +7293,7 @@ Transform:
   - {fileID: 2101015273}
   - {fileID: 1586967065}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
 --- !u!1 &1699728804
 GameObject:
   m_ObjectHideFlags: 0
@@ -7172,9 +7307,10 @@ GameObject:
   - 58: {fileID: 1699728807}
   - 114: {fileID: 1699728806}
   - 114: {fileID: 1699728805}
+  - 50: {fileID: 1699728811}
   m_Layer: 0
   m_Name: TeamB_Player3
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7216,7 +7352,10 @@ MonoBehaviour:
   allowMovement_Y: 0
   noMovementWhenHasBall: 1
   playerCtrlIndex: -1
+  playerMovementSpeed: 150
+  tempFriction: 10
   disable: 0
+  forceAdded: 0
 --- !u!58 &1699728807
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7225,7 +7364,7 @@ CircleCollider2D:
   m_PrefabInternal: {fileID: 1959387769}
   m_GameObject: {fileID: 1699728804}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1735d0bea2c052d43816f82f2e639585, type: 2}
   m_IsTrigger: 0
   m_Radius: .50000006
   m_Center: {x: 5.96046448e-08, y: 0}
@@ -7265,11 +7404,26 @@ Transform:
   m_PrefabInternal: {fileID: 1959387769}
   m_GameObject: {fileID: 1699728804}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -.800000012, z: -2.63229012e-05}
+  m_LocalPosition: {x: -1.50298131, y: .575068712, z: -2.63229012e-05}
   m_LocalScale: {x: .600000024, y: .600000024, z: .244047463}
   m_Children: []
   m_Father: {fileID: 1389712904}
   m_RootOrder: 2
+--- !u!50 &1699728811
+Rigidbody2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1699728804}
+  m_Mass: 1
+  m_LinearDrag: .5
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_FixedAngle: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
 --- !u!1 &1719371450
 GameObject:
   m_ObjectHideFlags: 0
@@ -7423,7 +7577,7 @@ Transform:
   m_LocalScale: {x: 1.39999998, y: .200000018, z: 1.39999998}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
 --- !u!1 &1739716982
 GameObject:
   m_ObjectHideFlags: 0
@@ -7843,9 +7997,10 @@ GameObject:
   - 58: {fileID: 1819853611}
   - 114: {fileID: 1819853610}
   - 114: {fileID: 1819853609}
+  - 50: {fileID: 1819853615}
   m_Layer: 0
   m_Name: TeamB_Player1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7887,7 +8042,10 @@ MonoBehaviour:
   allowMovement_Y: 0
   noMovementWhenHasBall: 1
   playerCtrlIndex: -1
+  playerMovementSpeed: 150
+  tempFriction: 10
   disable: 0
+  forceAdded: 0
 --- !u!58 &1819853611
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7896,7 +8054,7 @@ CircleCollider2D:
   m_PrefabInternal: {fileID: 1581415196}
   m_GameObject: {fileID: 1819853608}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1735d0bea2c052d43816f82f2e639585, type: 2}
   m_IsTrigger: 0
   m_Radius: .50000006
   m_Center: {x: 5.96046448e-08, y: 0}
@@ -7936,11 +8094,26 @@ Transform:
   m_PrefabInternal: {fileID: 1581415196}
   m_GameObject: {fileID: 1819853608}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4, z: -2.63229012e-05}
+  m_LocalPosition: {x: .799458206, y: 4.10295868, z: -2.63229012e-05}
   m_LocalScale: {x: .600000024, y: .600000024, z: .244047463}
   m_Children: []
   m_Father: {fileID: 1389712904}
   m_RootOrder: 0
+--- !u!50 &1819853615
+Rigidbody2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1819853608}
+  m_Mass: 1
+  m_LinearDrag: .5
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_FixedAngle: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
 --- !u!1 &1831768247
 GameObject:
   m_ObjectHideFlags: 0
@@ -8066,13 +8239,14 @@ GameObject:
   - 58: {fileID: 1882371320}
   - 114: {fileID: 1882371319}
   - 114: {fileID: 1882371318}
+  - 50: {fileID: 1882371323}
   m_Layer: 0
   m_Name: TeamA_Player4
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1882371317
 Transform:
   m_ObjectHideFlags: 0
@@ -8080,7 +8254,7 @@ Transform:
   m_PrefabInternal: {fileID: 1059802035}
   m_GameObject: {fileID: 1882371316}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.57356119, y: .432533741, z: -2.59999997e-05}
+  m_LocalPosition: {x: -1.82938778, y: -2.15771055, z: -2.59999997e-05}
   m_LocalScale: {x: .600000024, y: .600000024, z: .244047001}
   m_Children: []
   m_Father: {fileID: 247531805}
@@ -8122,7 +8296,10 @@ MonoBehaviour:
   allowMovement_Y: 0
   noMovementWhenHasBall: 1
   playerCtrlIndex: -1
+  playerMovementSpeed: 150
+  tempFriction: 10
   disable: 0
+  forceAdded: 0
 --- !u!58 &1882371320
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8164,6 +8341,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1059802035}
   m_GameObject: {fileID: 1882371316}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!50 &1882371323
+Rigidbody2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1882371316}
+  m_Mass: 1
+  m_LinearDrag: .5
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_FixedAngle: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
 --- !u!1001 &1893575490
 Prefab:
   m_ObjectHideFlags: 0
@@ -8177,7 +8369,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .800000012
+      value: -.639024913
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -8219,6 +8411,18 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: .600000024
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: playerMovementSpeed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 1735d0bea2c052d43816f82f2e639585, type: 2}
+    - target: {fileID: 100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
   m_RootGameObject: {fileID: 1910694381}
@@ -8237,9 +8441,10 @@ GameObject:
   - 58: {fileID: 1910694384}
   - 114: {fileID: 1910694383}
   - 114: {fileID: 1910694382}
+  - 50: {fileID: 1910694388}
   m_Layer: 0
   m_Name: TeamA_Player3
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8281,7 +8486,10 @@ MonoBehaviour:
   allowMovement_Y: 0
   noMovementWhenHasBall: 1
   playerCtrlIndex: -1
+  playerMovementSpeed: 150
+  tempFriction: 10
   disable: 0
+  forceAdded: 0
 --- !u!58 &1910694384
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8290,7 +8498,7 @@ CircleCollider2D:
   m_PrefabInternal: {fileID: 1893575490}
   m_GameObject: {fileID: 1910694381}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1735d0bea2c052d43816f82f2e639585, type: 2}
   m_IsTrigger: 0
   m_Radius: .50000006
   m_Center: {x: 5.96046448e-08, y: 0}
@@ -8330,11 +8538,26 @@ Transform:
   m_PrefabInternal: {fileID: 1893575490}
   m_GameObject: {fileID: 1910694381}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .800000012, z: -2.63229012e-05}
+  m_LocalPosition: {x: 0, y: -.639024913, z: -2.63229012e-05}
   m_LocalScale: {x: .600000024, y: .600000024, z: .244047463}
   m_Children: []
   m_Father: {fileID: 247531805}
   m_RootOrder: 2
+--- !u!50 &1910694388
+Rigidbody2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1910694381}
+  m_Mass: 1
+  m_LinearDrag: .5
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_FixedAngle: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
 --- !u!1 &1912341521
 GameObject:
   m_ObjectHideFlags: 0
@@ -8512,11 +8735,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.50298131
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -.800000012
+      value: .575068712
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -8561,6 +8784,18 @@ Prefab:
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_LocalScale.y
       value: .600000024
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: playerMovementSpeed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 1735d0bea2c052d43816f82f2e639585, type: 2}
+    - target: {fileID: 100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
@@ -9263,7 +9498,7 @@ Transform:
   - {fileID: 1164285025}
   - {fileID: 153992522}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
 --- !u!1 &2132050972
 GameObject:
   m_ObjectHideFlags: 0
@@ -9277,9 +9512,10 @@ GameObject:
   - 58: {fileID: 2132050973}
   - 114: {fileID: 2132050977}
   - 114: {fileID: 2132050978}
+  - 50: {fileID: 2132050979}
   m_Layer: 0
   m_Name: TeamA_Player1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9292,7 +9528,7 @@ CircleCollider2D:
   m_PrefabInternal: {fileID: 1329957922}
   m_GameObject: {fileID: 2132050972}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1735d0bea2c052d43816f82f2e639585, type: 2}
   m_IsTrigger: 0
   m_Radius: .50000006
   m_Center: {x: 5.96046448e-08, y: 0}
@@ -9354,7 +9590,10 @@ MonoBehaviour:
   allowMovement_Y: 0
   noMovementWhenHasBall: 1
   playerCtrlIndex: -1
+  playerMovementSpeed: 150
+  tempFriction: 10
   disable: 0
+  forceAdded: 0
 --- !u!114 &2132050978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9375,3 +9614,18 @@ MonoBehaviour:
   minSwipeDistanceToShoot: 25
   coolDownPassTime: .200000003
   pc_mvmnt: {fileID: 0}
+--- !u!50 &2132050979
+Rigidbody2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2132050972}
+  m_Mass: 1
+  m_LinearDrag: .5
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_FixedAngle: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
