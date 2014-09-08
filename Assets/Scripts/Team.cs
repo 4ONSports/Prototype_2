@@ -38,6 +38,7 @@ public class Team : MonoBehaviour {
 		for( int i=0; i<players.Length; ++i ) {
 			pc_balls[i] = players[i].GetComponent<PlayerControl_Ball>();
 			pc_mvmnts[i] = players[i].GetComponent<PlayerControl_Movement>();
+			pc_mvmnts[i].playerTeamIndex = i;
 		}
 		goalKeeper = players [goalKeeperIndex];
 	}

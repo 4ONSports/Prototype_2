@@ -11,6 +11,7 @@ public class PlayerControl_Movement : MonoBehaviour {
 	public float playerMovementSpeed = 5.0f;
 	public float tempFriction = 10.0f;
 	public bool forceAdded = false;
+	public int playerTeamIndex = -1;
 	[SerializeField] public bool disable = false;
 
 	private PlayerControl_Ball pcBall = null;
@@ -93,7 +94,8 @@ public class PlayerControl_Movement : MonoBehaviour {
 				
 				if ( hit.transform != null && hit.collider != null )
 				{
-					if( hit.transform.gameObject.name == gameObject.name ) {
+					if( hit.transform.gameObject.name == gameObject.name ||
+					   (pcBall.hasABall && hit.transform.tag == "Ball") ) {
 						playerSelect = true;
 						playerCtrlIndex = i;
 						playerCtrlIndexReordered = false;

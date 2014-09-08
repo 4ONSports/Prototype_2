@@ -27,23 +27,11 @@ public class PlayerControl_Ball : MonoBehaviour {
 	}
 	
 	void OnCollisionEnter2D(Collision2D coll) {
-
-//		// collision response
-//		if (coll.gameObject.tag == "Player" ) {
-//			coll.gameObject.rigidbody2D.isKinematic = false;
-//
-//			coll.gameObject.rigidbody2D.AddForce (pc_mvmnt.rigidbody2D.velocity*-10);
-//		}
-		
 		if( hasABall || disable ) {
 			return;
 		}
 
 		if (coll.gameObject.tag == "Ball" ) {
-//			this.rigidbody2D.velocity *= 0;
-//			this.rigidbody2D.angularVelocity *= 0;
-//			this.rigidbody2D.isKinematic = true;
-
 			hasABall = true;
 			ball = coll.gameObject.GetComponent<Ball>();
 			ball.OnPossession(this, coll);

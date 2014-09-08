@@ -1313,6 +1313,7 @@ MonoBehaviour:
   playerMovementSpeed: 150
   tempFriction: 10
   forceAdded: 0
+  playerTeamIndex: -1
   disable: 0
   movementLimitObj: {fileID: 0}
   scaleDiff: 0
@@ -1603,6 +1604,7 @@ MonoBehaviour:
   playerMovementSpeed: 150
   tempFriction: 10
   forceAdded: 0
+  playerTeamIndex: -1
   disable: 0
   movementLimitObj: {fileID: 0}
   scaleDiff: 0
@@ -1738,7 +1740,7 @@ GameObject:
   - 114: {fileID: 1042311642}
   - 114: {fileID: 1042311641}
   m_Layer: 0
-  m_Name: GameMode
+  m_Name: GameMode_R2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1921,6 +1923,7 @@ MonoBehaviour:
   playerMovementSpeed: 150
   tempFriction: 10
   forceAdded: 0
+  playerTeamIndex: -1
   disable: 0
   movementLimitObj: {fileID: 0}
   scaleDiff: 0
@@ -2945,6 +2948,7 @@ MonoBehaviour:
   playerMovementSpeed: 150
   tempFriction: 10
   forceAdded: 0
+  playerTeamIndex: -1
   disable: 0
   movementLimitObj: {fileID: 0}
   scaleDiff: 0
@@ -3383,6 +3387,7 @@ MonoBehaviour:
   playerMovementSpeed: 150
   tempFriction: 10
   forceAdded: 0
+  playerTeamIndex: -1
   disable: 0
   movementLimitObj: {fileID: 0}
   scaleDiff: 0
@@ -3738,7 +3743,7 @@ GameObject:
   - 114: {fileID: 1638356628}
   - 114: {fileID: 1638356630}
   m_Layer: 0
-  m_Name: GameMode
+  m_Name: GameMode_R1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3845,6 +3850,7 @@ MonoBehaviour:
   playerMovementSpeed: 150
   tempFriction: 10
   forceAdded: 0
+  playerTeamIndex: -1
   disable: 0
   movementLimitObj: {fileID: 0}
   scaleDiff: 0
@@ -4276,6 +4282,7 @@ MonoBehaviour:
   playerMovementSpeed: 150
   tempFriction: 10
   forceAdded: 0
+  playerTeamIndex: -1
   disable: 0
   movementLimitObj: {fileID: 0}
   scaleDiff: 0
@@ -4426,6 +4433,7 @@ MonoBehaviour:
   playerMovementSpeed: 150
   tempFriction: 10
   forceAdded: 0
+  playerTeamIndex: -1
   disable: 0
   movementLimitObj: {fileID: 0}
   scaleDiff: 0
@@ -4622,6 +4630,7 @@ MonoBehaviour:
   playerMovementSpeed: 150
   tempFriction: 10
   forceAdded: 0
+  playerTeamIndex: -1
   disable: 0
   movementLimitObj: {fileID: 0}
   scaleDiff: 0
@@ -5123,6 +5132,7 @@ MonoBehaviour:
   playerMovementSpeed: 150
   tempFriction: 10
   forceAdded: 0
+  playerTeamIndex: -1
   disable: 0
   movementLimitObj: {fileID: 0}
   scaleDiff: 0
