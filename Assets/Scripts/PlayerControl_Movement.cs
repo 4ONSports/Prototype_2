@@ -11,7 +11,8 @@ public class PlayerControl_Movement : MonoBehaviour {
 	public float playerMovementSpeed = 5.0f;
 	public float tempFriction = 10.0f;
 	public bool forceAdded = false;
-	public int playerTeamIndex = -1;
+	public TeamSide playerTeamSide = TeamSide.INVALID;
+	public int playerIndexPosOnTeam = -1;
 	[SerializeField] public bool disable = false;
 
 	private PlayerControl_Ball pcBall = null;
@@ -63,7 +64,8 @@ public class PlayerControl_Movement : MonoBehaviour {
 					movementLimitObj.renderer.enabled = false;
 				}
 				if( movePlayer ) {
-					GameEvents.TriggerEvent<string>(GameEvents.GameEvent.EVT_PLAYER_MOVED, gameObject.name);
+					int[] obj = {(int)playerTeamSide, playerIndexPosOnTeam};
+					GameEvents.TriggerEvent(GameEvents.GameEvent.EVT_PLAYER_MOVED, obj);
 				}
 				movePlayer = false;
 

@@ -57,15 +57,10 @@ public class GameMode_RuleSet2 : GameMode {
 	}
 	
 	protected override void _OnPlayerMoved () {
-//		print ("Player Moved ==== ");
-//
-//		for( int i=0; i<teams.Length; ++i ) {
-//			string playerName = GameEvents.GetEventProperty<string>(GameEvents.GameEvent.EVT_PLAYER_MOVED);
-//			if( teams[i].transform.Find(playerName) ) {
-//				 print ("Disabling " + playerName);
-//				teams[i].DisablePlayerMovement( teams[i].GetPlayerIndexFromName(playerName) );
-//			}
-//		}
+		int[] eventObj = (int[])GameEvents.GetEventProperty (GameEvents.GameEvent.EVT_PLAYER_MOVED);
+		int side = eventObj [0];
+		int posIndex = eventObj [1];
+		teams[side].DisablePlayerMovement(posIndex);
 	}
 	
 	void ResetPositions () {

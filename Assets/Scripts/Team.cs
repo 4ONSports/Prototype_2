@@ -2,6 +2,7 @@
 using System.Collections;
 
 public enum TeamSide {
+	INVALID = -1,
 	SIDE_HOME, //0 is always home, blue
 	SIDE_AWAY, //1 is always away, red
 	COUNT
@@ -38,7 +39,8 @@ public class Team : MonoBehaviour {
 		for( int i=0; i<players.Length; ++i ) {
 			pc_balls[i] = players[i].GetComponent<PlayerControl_Ball>();
 			pc_mvmnts[i] = players[i].GetComponent<PlayerControl_Movement>();
-			pc_mvmnts[i].playerTeamIndex = i;
+			pc_mvmnts[i].playerTeamSide = side;
+			pc_mvmnts[i].playerIndexPosOnTeam = i;
 		}
 		goalKeeper = players [goalKeeperIndex];
 	}

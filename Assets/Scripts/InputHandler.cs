@@ -109,7 +109,6 @@ public class InputHandler : MonoBehaviour {
 						{
 						case TouchPhase.Began :
 							swipeInfo[i].swipe_state = SwipeState.BEGIN;
-							print ("Touch Index = "+i);
 							swipeInfo[i].isSwiping = true;
 							swipeInfo[i].swipe_startTime = Time.time;
 							swipeInfo[i].swipe_startPos = touch.position;
