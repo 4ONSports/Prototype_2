@@ -288,6 +288,30 @@ Prefab:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: allowMovement_Y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.a
+      value: .168627456
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_NoMvmntColor.a
+      value: .168627456
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
   m_RootGameObject: {fileID: 1345651158}
@@ -500,6 +524,30 @@ Prefab:
     - target: {fileID: 100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_Name
       value: TeamA_Player2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: allowMovement_Y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.a
+      value: .168627456
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_NoMvmntColor.a
+      value: .168627456
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
@@ -1234,6 +1282,30 @@ Prefab:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: allowMovement_Y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.a
+      value: .168627456
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_NoMvmntColor.a
+      value: .168627456
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
   m_RootGameObject: {fileID: 900116994}
@@ -1307,7 +1379,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSelect: 0
   allowMovement_X: 1
-  allowMovement_Y: 0
+  allowMovement_Y: 1
   noMovementWhenHasBall: 1
   playerCtrlIndex: -1
   playerMovementSpeed: 150
@@ -1317,6 +1389,8 @@ MonoBehaviour:
   playerIndexPosOnTeam: -1
   disable: 0
   movementLimitObj: {fileID: 0}
+  movementLimitObj_DefaultColor: {r: 1, g: 1, b: 1, a: .168627456}
+  movementLimitObj_NoMvmntColor: {r: 1, g: 0, b: 0, a: .168627456}
   scaleDiff: 0
   initMvmntTransform: {x: 0, y: 0, z: 0}
   movePlayer: 0
@@ -1599,7 +1673,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSelect: 0
   allowMovement_X: 1
-  allowMovement_Y: 0
+  allowMovement_Y: 1
   noMovementWhenHasBall: 1
   playerCtrlIndex: -1
   playerMovementSpeed: 150
@@ -1609,6 +1683,8 @@ MonoBehaviour:
   playerIndexPosOnTeam: -1
   disable: 0
   movementLimitObj: {fileID: 0}
+  movementLimitObj_DefaultColor: {r: 1, g: 1, b: 1, a: .168627456}
+  movementLimitObj_NoMvmntColor: {r: 1, g: 0, b: 0, a: .168627456}
   scaleDiff: 0
   initMvmntTransform: {x: 0, y: 0, z: 0}
   movePlayer: 0
@@ -1859,6 +1935,30 @@ Prefab:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: allowMovement_Y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.a
+      value: .168627456
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_NoMvmntColor.a
+      value: .168627456
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
   m_RootGameObject: {fileID: 972260612}
@@ -1919,7 +2019,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSelect: 0
   allowMovement_X: 1
-  allowMovement_Y: 0
+  allowMovement_Y: 1
   noMovementWhenHasBall: 1
   playerCtrlIndex: -1
   playerMovementSpeed: 150
@@ -1929,6 +2029,8 @@ MonoBehaviour:
   playerIndexPosOnTeam: -1
   disable: 0
   movementLimitObj: {fileID: 0}
+  movementLimitObj_DefaultColor: {r: 1, g: 1, b: 1, a: .168627456}
+  movementLimitObj_NoMvmntColor: {r: 1, g: 0, b: 0, a: .168627456}
   scaleDiff: 0
   initMvmntTransform: {x: 0, y: 0, z: 0}
   movePlayer: 0
@@ -2069,6 +2171,30 @@ Prefab:
     - target: {fileID: 100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: allowMovement_Y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.a
+      value: .168627456
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_NoMvmntColor.a
+      value: .168627456
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
@@ -2323,6 +2449,30 @@ Prefab:
     - target: {fileID: 100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: allowMovement_Y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.a
+      value: .168627456
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_NoMvmntColor.a
+      value: .168627456
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
@@ -2872,6 +3022,30 @@ Prefab:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: allowMovement_Y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.a
+      value: .168627456
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_NoMvmntColor.a
+      value: .168627456
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
   m_RootGameObject: {fileID: 2132050972}
@@ -2945,7 +3119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSelect: 0
   allowMovement_X: 1
-  allowMovement_Y: 0
+  allowMovement_Y: 1
   noMovementWhenHasBall: 1
   playerCtrlIndex: -1
   playerMovementSpeed: 150
@@ -2955,6 +3129,8 @@ MonoBehaviour:
   playerIndexPosOnTeam: -1
   disable: 0
   movementLimitObj: {fileID: 0}
+  movementLimitObj_DefaultColor: {r: 1, g: 1, b: 1, a: .168627456}
+  movementLimitObj_NoMvmntColor: {r: 1, g: 0, b: 0, a: .168627456}
   scaleDiff: 0
   initMvmntTransform: {x: 0, y: 0, z: 0}
   movePlayer: 0
@@ -3385,7 +3561,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSelect: 0
   allowMovement_X: 1
-  allowMovement_Y: 0
+  allowMovement_Y: 1
   noMovementWhenHasBall: 1
   playerCtrlIndex: -1
   playerMovementSpeed: 150
@@ -3395,6 +3571,8 @@ MonoBehaviour:
   playerIndexPosOnTeam: -1
   disable: 0
   movementLimitObj: {fileID: 0}
+  movementLimitObj_DefaultColor: {r: 1, g: 1, b: 1, a: .168627456}
+  movementLimitObj_NoMvmntColor: {r: 1, g: 0, b: 0, a: .168627456}
   scaleDiff: 0
   initMvmntTransform: {x: 0, y: 0, z: 0}
   movePlayer: 0
@@ -3617,6 +3795,30 @@ Prefab:
     - target: {fileID: 100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: allowMovement_Y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.a
+      value: .168627456
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_NoMvmntColor.a
+      value: .168627456
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
@@ -3849,7 +4051,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSelect: 0
   allowMovement_X: 1
-  allowMovement_Y: 0
+  allowMovement_Y: 1
   noMovementWhenHasBall: 1
   playerCtrlIndex: -1
   playerMovementSpeed: 150
@@ -3859,6 +4061,8 @@ MonoBehaviour:
   playerIndexPosOnTeam: -1
   disable: 0
   movementLimitObj: {fileID: 0}
+  movementLimitObj_DefaultColor: {r: 1, g: 1, b: 1, a: .168627456}
+  movementLimitObj_NoMvmntColor: {r: 1, g: 0, b: 0, a: .168627456}
   scaleDiff: 0
   initMvmntTransform: {x: 0, y: 0, z: 0}
   movePlayer: 0
@@ -4282,7 +4486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSelect: 0
   allowMovement_X: 1
-  allowMovement_Y: 0
+  allowMovement_Y: 1
   noMovementWhenHasBall: 1
   playerCtrlIndex: -1
   playerMovementSpeed: 150
@@ -4292,6 +4496,8 @@ MonoBehaviour:
   playerIndexPosOnTeam: -1
   disable: 0
   movementLimitObj: {fileID: 0}
+  movementLimitObj_DefaultColor: {r: 1, g: 1, b: 1, a: .168627456}
+  movementLimitObj_NoMvmntColor: {r: 1, g: 0, b: 0, a: .168627456}
   scaleDiff: 0
   initMvmntTransform: {x: 0, y: 0, z: 0}
   movePlayer: 0
@@ -4434,7 +4640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSelect: 0
   allowMovement_X: 1
-  allowMovement_Y: 0
+  allowMovement_Y: 1
   noMovementWhenHasBall: 1
   playerCtrlIndex: -1
   playerMovementSpeed: 150
@@ -4444,6 +4650,8 @@ MonoBehaviour:
   playerIndexPosOnTeam: -1
   disable: 0
   movementLimitObj: {fileID: 0}
+  movementLimitObj_DefaultColor: {r: 1, g: 1, b: 1, a: .168627456}
+  movementLimitObj_NoMvmntColor: {r: 1, g: 0, b: 0, a: .168627456}
   scaleDiff: 0
   initMvmntTransform: {x: 0, y: 0, z: 0}
   movePlayer: 0
@@ -4572,6 +4780,30 @@ Prefab:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: allowMovement_Y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.a
+      value: .168627456
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_NoMvmntColor.a
+      value: .168627456
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
   m_RootGameObject: {fileID: 1910694381}
@@ -4632,7 +4864,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSelect: 0
   allowMovement_X: 1
-  allowMovement_Y: 0
+  allowMovement_Y: 1
   noMovementWhenHasBall: 1
   playerCtrlIndex: -1
   playerMovementSpeed: 150
@@ -4642,6 +4874,8 @@ MonoBehaviour:
   playerIndexPosOnTeam: -1
   disable: 0
   movementLimitObj: {fileID: 0}
+  movementLimitObj_DefaultColor: {r: 1, g: 1, b: 1, a: .168627456}
+  movementLimitObj_NoMvmntColor: {r: 1, g: 0, b: 0, a: .168627456}
   scaleDiff: 0
   initMvmntTransform: {x: 0, y: 0, z: 0}
   movePlayer: 0
@@ -4786,6 +5020,30 @@ Prefab:
     - target: {fileID: 100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: allowMovement_Y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_DefaultColor.a
+      value: .168627456
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
+      propertyPath: movementLimitObj_NoMvmntColor.a
+      value: .168627456
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
@@ -5135,7 +5393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSelect: 0
   allowMovement_X: 1
-  allowMovement_Y: 0
+  allowMovement_Y: 1
   noMovementWhenHasBall: 1
   playerCtrlIndex: -1
   playerMovementSpeed: 150
@@ -5145,6 +5403,8 @@ MonoBehaviour:
   playerIndexPosOnTeam: -1
   disable: 0
   movementLimitObj: {fileID: 0}
+  movementLimitObj_DefaultColor: {r: 1, g: 1, b: 1, a: .168627456}
+  movementLimitObj_NoMvmntColor: {r: 1, g: 0, b: 0, a: .168627456}
   scaleDiff: 0
   initMvmntTransform: {x: 0, y: 0, z: 0}
   movePlayer: 0

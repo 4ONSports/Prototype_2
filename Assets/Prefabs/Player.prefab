@@ -156,14 +156,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSelect: 0
   allowMovement_X: 1
-  allowMovement_Y: 0
+  allowMovement_Y: 1
   noMovementWhenHasBall: 1
   playerCtrlIndex: -1
   playerMovementSpeed: 150
   tempFriction: 10
   forceAdded: 0
+  playerTeamSide: -1
+  playerIndexPosOnTeam: -1
   disable: 0
   movementLimitObj: {fileID: 0}
+  movementLimitObj_DefaultColor: {r: 1, g: 1, b: 1, a: .168627456}
+  movementLimitObj_NoMvmntColor: {r: 1, g: 0, b: 0, a: .168627456}
   scaleDiff: 0
   initMvmntTransform: {x: 0, y: 0, z: 0}
   movePlayer: 0

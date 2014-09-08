@@ -18,6 +18,8 @@ public class PlayerControl_Movement : MonoBehaviour {
 	private PlayerControl_Ball pcBall = null;
 	private bool playerCtrlIndexReordered = false;
 	[SerializeField] private GameObject movementLimitObj;
+	[SerializeField] private Color movementLimitObj_DefaultColor = new Color(1,1,1,0.01f);
+	[SerializeField] private Color movementLimitObj_NoMvmntColor = new Color(1,0,0,0.01f);
 	[SerializeField] private float scaleDiff = 0.0f;
 	[SerializeField] private Vector3 initMvmntTransform = Vector3.zero;
 	[SerializeField] private bool movePlayer = false;
@@ -105,6 +107,12 @@ public class PlayerControl_Movement : MonoBehaviour {
 						initMvmntTransform.y = transform.position.y;
 						initMvmntTransform.z = transform.position.z;
 						movementLimitObj.renderer.enabled = true;
+						if( disable ) {
+							movementLimitObj.renderer.material.color = movementLimitObj_NoMvmntColor;
+						}
+						else {
+							movementLimitObj.renderer.material.color = movementLimitObj_DefaultColor;
+						}
 					}
 				}
 			}
