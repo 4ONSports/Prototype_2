@@ -72,12 +72,16 @@ public class Team : MonoBehaviour {
 				lastPlayerWithBallIndex = i;
 			}
 		}
-
-		if( isInPossession ) {
-			for( int i=0; i<players.Length; ++i ) {
-				pc_mvmnts[i].disable = true;
-			}
+	}
+	
+	public void DisableAllPlayerMovements () {
+		for( int i=0; i<players.Length; ++i ) {
+			pc_mvmnts[i].disable = true;
 		}
+	}
+	
+	public void DisablePlayerMovement ( int index ) {
+		pc_mvmnts[index].disable = true;
 	}
 
 	public void AddScore()  {
@@ -88,5 +92,25 @@ public class Team : MonoBehaviour {
 		EnableAllPlayers ();
 		_ball.rigidbody2D.velocity *= 0;
 		_ball.transform.position = goalKeeper.transform.position;
+	}
+	
+	public PlayerControl_Movement GetPlayerMvmntByName( string name )  {
+		PlayerControl_Movement pc = null;
+		for (int i=0; i<players.Length; ++i) {
+			if( players[i].name == name ) {
+				pc = pc_mvmnts[i];
+			}
+		}
+		return pc;
+	}
+	
+	public int GetPlayerIndexFromName( string name )  {
+		int index = -1;
+		for (int i=0; i<players.Length; ++i) {
+			if( players[i].name == name ) {
+				index = i;
+			}
+		}
+		return index;
 	}
 }

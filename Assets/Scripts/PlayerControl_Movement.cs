@@ -61,6 +61,9 @@ public class PlayerControl_Movement : MonoBehaviour {
 					movementLimitObj.transform.parent = transform;
 					movementLimitObj.renderer.enabled = false;
 				}
+				if( movePlayer ) {
+					GameEvents.TriggerEvent<string>(GameEvents.GameEvent.EVT_PLAYER_MOVED, gameObject.name);
+				}
 				movePlayer = false;
 
 				if( playerCtrlIndex == i ) {

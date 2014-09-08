@@ -10,15 +10,18 @@ public class GameMode : MonoBehaviour {
 	
 	void Update () {
 		_OnUpdate ();
-
+		
+		if( GameEvents.GetEvent(GameEvents.GameEvent.EVT_GOAL_SCORED)) {
+			_OnGoalScored();
+		}
 		if( GameEvents.GetEvent(GameEvents.GameEvent.EVT_PLAYER_SHOOT) ) {
 			_OnPlayerShoot();
 		}
 		if( GameEvents.GetEvent(GameEvents.GameEvent.EVT_PLAYER_POSSESS_BALL) ) {
 			_OnPlayerBallPossession();
 		}
-		if( GameEvents.GetEvent(GameEvents.GameEvent.EVT_GOAL_SCORED)) {
-			_OnGoalScored();
+		if( GameEvents.GetEvent(GameEvents.GameEvent.EVT_PLAYER_MOVED)) {
+			_OnPlayerMoved();
 		}
 
 	}
@@ -43,12 +46,15 @@ public class GameMode : MonoBehaviour {
 	protected virtual void _OnUpdate() {
 	}
 	
+	protected virtual void _OnGoalScored() {
+	}
+	
 	protected virtual void _OnPlayerShoot() {
 	}
 	
 	protected virtual void _OnPlayerBallPossession() {
 	}
 	
-	protected virtual void _OnGoalScored() {
+	protected virtual void _OnPlayerMoved() {
 	}
 }
