@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class GameEvents : MonoBehaviour {
+	//TODO: Remove this class
 	public enum GameEvent{
 		EVT_GOAL_SCORED,
 		EVT_PLAYER_SHOOT,

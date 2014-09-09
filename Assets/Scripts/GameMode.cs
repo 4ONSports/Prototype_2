@@ -7,11 +7,21 @@ public class GameMode : MonoBehaviour {
 	public Team[] teams;
 
 	public TextMesh scoreText = null;
+
+
+	void Start() {
+		_OnStart ();
+		GameEvents_2.SubscribeToEvent (GameEvents_2.GameEvent.EVT_GOAL_SCORED, this);
+		GameEvents_2.SubscribeToEvent (GameEvents_2.GameEvent.EVT_PLAYER_SHOOT, this);
+		GameEvents_2.SubscribeToEvent (GameEvents_2.GameEvent.EVT_PLAYER_POSSESS_BALL, this);
+		GameEvents_2.SubscribeToEvent (GameEvents_2.GameEvent.EVT_PLAYER_MOVED, this);
+	}
 	
 	void Update () {
 		_OnUpdate ();
-		
-		if( GameEvents.GetEvent(GameEvents.GameEvent.EVT_GOAL_SCORED)) {
+
+		//TODO: Remove this commented code.
+		/*if( GameEvents.GetEvent(GameEvents.GameEvent.EVT_GOAL_SCORED)) {
 			_OnGoalScored();
 		}
 		if( GameEvents.GetEvent(GameEvents.GameEvent.EVT_PLAYER_SHOOT) ) {
@@ -22,7 +32,7 @@ public class GameMode : MonoBehaviour {
 		}
 		if( GameEvents.GetEvent(GameEvents.GameEvent.EVT_PLAYER_MOVED)) {
 			_OnPlayerMoved();
-		}
+		}*/
 
 	}
 
@@ -45,6 +55,9 @@ public class GameMode : MonoBehaviour {
 	
 	protected virtual void _OnUpdate() {
 	}
+
+	protected virtual void _OnStart() {
+	}
 	
 	protected virtual void _OnGoalScored() {
 	}
@@ -56,5 +69,18 @@ public class GameMode : MonoBehaviour {
 	}
 	
 	protected virtual void _OnPlayerMoved() {
+	}
+
+/*******************************************************************/
+	protected virtual void _OnGoalScored2(Team _scoringTeam) {
+	}
+	
+	protected virtual void _OnPlayerShot2() {
+	}
+	
+	protected virtual void _OnPlayerBallPossession2() {
+	}
+	
+	protected virtual void _OnPlayerMoved2(object[] _TeamAndPlayer) {
 	}
 }

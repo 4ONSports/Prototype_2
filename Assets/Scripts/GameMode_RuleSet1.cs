@@ -34,14 +34,8 @@ public class GameMode_RuleSet1 : GameMode {
 		}
 	}
 	
-	protected override void _OnGoalScored () {
-		for( int i=0; i<teams.Length; ++i ) {
-			if(teams[i].IsMyGoalScore){
-				Team t = teams[i];
-				GetOppositeTeam(t).AddScore();
-				t.GiveBallToGoalKeeper(t.teamGoal.GetBall);
-			}
-		}
+	protected override void _OnGoalScored2(Team _scoringTeam) {
+		GetOppositeTeam(_scoringTeam).AddScore();
 		UpdateScoreText (teams [0].Score, teams [1].Score);
 	}
 	

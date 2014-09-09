@@ -1,0 +1,61 @@
+﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+
+public class GameEvents_2 : MonoBehaviour {
+
+	public enum GameEvent{
+		EVT_GOAL_SCORED,
+		EVT_PLAYER_SHOOT,
+		EVT_PLAYER_POSSESS_BALL,
+		EVT_PLAYER_MOVED,
+		COUNT
+	}
+
+	private static List<MonoBehaviour> evtGoalScoredSubscribers = new List<MonoBehaviour>();
+	private static List<MonoBehaviour> evtPlayerShotSubscribers = new List<MonoBehaviour>();
+	private static List<MonoBehaviour> evtPlayerPossessBallSubscribers = new List<MonoBehaviour>();
+	private static List<MonoBehaviour> evtPlayerMovedSubscribers = new List<MonoBehaviour>();
+
+	public static void SubscribeToEvent(GameEvent _gameEvent, MonoBehaviour _subscriber) {
+		switch(_gameEvent)
+		{
+		case GameEvent.EVT_GOAL_SCORED:
+			evtGoalScoredSubscribers.Add(_subscriber);
+			break;
+		case GameEvent.EVT_PLAYER_SHOOT:
+			evtPlayerShotSubscribers.Add(_subscriber);
+			break;
+		case GameEvent.EVT_PLAYER_POSSESS_BALL:
+			evtPlayerPossessBallSubscribers.Add(_subscriber);
+			break;
+		case GameEvent.EVT_PLAYER_MOVED:
+			evtPlayerMovedSubscribers.Add(_subscriber);
+			break;
+		}
+	}
+
+	public static void BroadcastGoalScored(Team _scoringTeam) {
+		foreach (MonoBehaviour _subscriber in evtGoalScoredSubscribers) {
+			_subscriber.SendMessage ("_OnGoalScored2",_scoringTeam);
+		}
+	}
+
+	public static void BroadcastPlayerShot() {
+		foreach (MonoBehaviour _subscriber in evtPlayerShotSubscribers) {
+			_subscriber.SendMessage ("_OnPlayerShot2");
+		}
+	}
+
+	public static void BroadcastPlayerPossessBall() {
+		foreach (MonoBehaviour _subscriber in evtPlayerPossessBallSubscribers) {
+			_subscriber.SendMessage ("_OnPlayerBallPossession2");
+		}
+	}
+
+	public static void BroadcastPlayerMoved(object[] _TeamAndPlayer) {
+		foreach (MonoBehaviour _subscriber in evtPlayerMovedSubscribers) {
+			_subscriber.SendMessage ("_OnPlayerMoved2",_TeamAndPlayer);
+		}
+	}
+}

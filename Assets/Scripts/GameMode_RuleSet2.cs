@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GameMode_RuleSet2 : GameMode {
 
-	void Start() {
+	protected override void _OnStart() {
 		numOfGoalsToWin = 3;
 		goalCount = new int[(int)TeamSide.COUNT];
 	}
@@ -16,19 +16,14 @@ public class GameMode_RuleSet2 : GameMode {
 //			}
 //		}
 	}
-	
-	protected override void _OnGoalScored () {
-		for( int i=0; i<teams.Length; ++i ) {
-			if(teams[i].IsMyGoalScore){
-				Team t = teams[i];
-				GetOppositeTeam(t).AddScore();
-				t.GiveBallToGoalKeeper(t.teamGoal.GetBall);
-			}
-		}
+
+	protected override void _OnGoalScored2(Team _scoringTeam) {
+		GetOppositeTeam(_scoringTeam).AddScore();
+		_scoringTeam.GiveBallToGoalKeeper(_scoringTeam.teamGoal.GetBall);
 		UpdateScoreText (teams [0].Score, teams [1].Score);
 	}
 	
-	protected override void _OnPlayerShoot () {
+	protected override void _OnPlayerShot2 () {
 		for( int i=0; i<teams.Length; ++i ) {
 			if( teams[i].isInPossession ) {
 				teams[i].DisableLastPlayerWithBall();
@@ -36,7 +31,7 @@ public class GameMode_RuleSet2 : GameMode {
 		}
 	}
 	
-	protected override void _OnPlayerBallPossession() {
+	protected override void _OnPlayerBallPossession2() {
 		int prevTeamInPossession = (teams[0].isInPossession)? 0:
 									(teams[1].isInPossession)? 1: -1;
 		int newTeamInPossession = -1;
@@ -56,11 +51,8 @@ public class GameMode_RuleSet2 : GameMode {
 		}
 	}
 	
-	protected override void _OnPlayerMoved () {
-		int[] eventObj = (int[])GameEvents.GetEventProperty (GameEvents.GameEvent.EVT_PLAYER_MOVED);
-		int side = eventObj [0];
-		int posIndex = eventObj [1];
-		teams[side].DisablePlayerMovement(posIndex);
+	protected override void _OnPlayerMoved2 (object[] _TeamAndPlayer) {
+		teams[(int)_TeamAndPlayer[0]].DisablePlayerMovement((int)_TeamAndPlayer[1]);
 	}
 	
 	void ResetPositions () {

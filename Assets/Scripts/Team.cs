@@ -28,11 +28,6 @@ public class Team : MonoBehaviour {
 		set{score = value;}
 	}
 
-	public bool IsMyGoalScore
-	{
-		get {return teamGoal.GetScoredOnce;}
-	}
-
 	void Start () {
 		pc_balls = new PlayerControl_Ball[players.Length];
 		pc_mvmnts = new PlayerControl_Movement[players.Length];
@@ -43,6 +38,7 @@ public class Team : MonoBehaviour {
 			pc_mvmnts[i].playerIndexPosOnTeam = i;
 		}
 		goalKeeper = players [goalKeeperIndex];
+		teamGoal.AssignTeam (this);
 	}
 	
 	public void EnableAllPlayers () {

@@ -68,6 +68,7 @@ public class PlayerControl_Movement : MonoBehaviour {
 				if( movePlayer ) {
 					int[] obj = {(int)playerTeamSide, playerIndexPosOnTeam};
 					GameEvents.TriggerEvent(GameEvents.GameEvent.EVT_PLAYER_MOVED, obj);
+					GameEvents_2.BroadcastPlayerMoved(new object[]{playerTeamSide,playerIndexPosOnTeam});
 				}
 				movePlayer = false;
 

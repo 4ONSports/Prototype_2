@@ -3,18 +3,8 @@ using System.Collections;
 
 public class Goal : MonoBehaviour {
 
-	private bool scoredOnMe = false;
 	private GameObject ball = null;
-
-	//TODO: part of reactoring,  remove this get
-	public bool GetScoredOnce {
-		get
-		{ 	
-			bool b = scoredOnMe;
-			scoredOnMe = false;
-			return b;
-		}
-	}
+	private Team myTeam;
 
 	public GameObject GetBall {
 		get	{ return ball;}
@@ -24,11 +14,14 @@ public class Goal : MonoBehaviour {
 		this.collider2D.isTrigger = true;
 	}
 
+	public void AssignTeam(Team _myTeam) {
+		myTeam = _myTeam;
+	}
+
 	void OnTriggerEnter2D (Collider2D c) {
 		if (c.tag == "Ball") {
 			ball = c.gameObject;
-			GameEvents.TriggerEvent(GameEvents.GameEvent.EVT_GOAL_SCORED);
-			scoredOnMe= true;
+			GameEvents_2.BroadcastGoalScored(myTeam);
 		}
 	}
 }
