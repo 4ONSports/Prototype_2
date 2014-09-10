@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameEvents : MonoBehaviour {
-	//TODO: Remove this class
+
 	public enum GameEvent{
 		EVT_GOAL_SCORED,
 		EVT_PLAYER_SHOOT,
@@ -10,83 +11,51 @@ public class GameEvents : MonoBehaviour {
 		EVT_PLAYER_MOVED,
 		COUNT
 	}
-	static private bool[] eventState;
-	static private bool[] eventStateBuffer;
-	static private object[] eventPropertyArray_Obj;
 
-	// Use this for initialization
-	void Start () {
-		eventState = new bool[(int)GameEvent.COUNT];
-		eventStateBuffer = new bool[(int)GameEvent.COUNT];
-		eventPropertyArray_Obj = new object[(int)GameEvent.COUNT];
-		DisableEvents ();
-		DisableEventsBuffer ();
-	}
+	private static List<MonoBehaviour> evtGoalScoredSubscribers = new List<MonoBehaviour>();
+	private static List<MonoBehaviour> evtPlayerShotSubscribers = new List<MonoBehaviour>();
+	private static List<MonoBehaviour> evtPlayerPossessBallSubscribers = new List<MonoBehaviour>();
+	private static List<MonoBehaviour> evtPlayerMovedSubscribers = new List<MonoBehaviour>();
 
-	void LateUpdate () {
-		// disable all events
-		DisableEvents ();
-
-		// if there is an event to be triggered enable it
-		CopyFromBuffer ();
-		DisableEventsBuffer ();
-	}
-	
-	static void DisableEvents () {
-		for( int i=0; i<eventState.Length; ++i ) {
-			eventState[i] = false;
+	public static void SubscribeToEvent(GameEvent _gameEvent, MonoBehaviour _subscriber) {
+		switch(_gameEvent)
+		{
+		case GameEvent.EVT_GOAL_SCORED:
+			evtGoalScoredSubscribers.Add(_subscriber);
+			break;
+		case GameEvent.EVT_PLAYER_SHOOT:
+			evtPlayerShotSubscribers.Add(_subscriber);
+			break;
+		case GameEvent.EVT_PLAYER_POSSESS_BALL:
+			evtPlayerPossessBallSubscribers.Add(_subscriber);
+			break;
+		case GameEvent.EVT_PLAYER_MOVED:
+			evtPlayerMovedSubscribers.Add(_subscriber);
+			break;
 		}
 	}
-	
-	static void DisableEventsBuffer () {
-		for( int i=0; i<eventStateBuffer.Length; ++i ) {
-			eventStateBuffer[i] = false;
-		}
-	}
-	
-	static void CopyFromBuffer () {
-		for( int i=0; i<eventState.Length; ++i ) {
-			eventState[i] = eventStateBuffer[i];
-			if( !eventState[i] ) {
-				eventPropertyArray_Obj[i] = null;
-			}
-		}
-	}
-	
-	public static void TriggerEvent( GameEvent _evt ) {
-		// assert _evt < GameEvent.COUNT
-		eventStateBuffer[(int)_evt] = true;
-	}
-	
-	public static void TriggerEvent( GameEvent _evt, int eventProperty ) {
-		// assert _evt < GameEvent.COUNT
-		eventStateBuffer[(int)_evt] = true;
-		eventPropertyArray_Obj[(int)_evt] = eventProperty;
-	}
-	
-	public static void TriggerEvent( GameEvent _evt, string eventProperty ) {
-		// assert _evt < GameEvent.COUNT
-		eventStateBuffer[(int)_evt] = true;
-		eventPropertyArray_Obj[(int)_evt] = eventProperty;
-	}
-	
-	public static void TriggerEvent( GameEvent _evt, int[] eventProperty ) {
-		// assert _evt < GameEvent.COUNT
-		eventStateBuffer[(int)_evt] = true;
-		eventPropertyArray_Obj[(int)_evt] = eventProperty;
-	}
-	
-	public static bool GetEvent( GameEvent _evt ) {
-		return eventState[(int)_evt];
-	}
-	
-	public static object GetEventProperty( GameEvent _evt ) {
-		object returnObject = null;
 
-		if( eventState[(int)_evt] ) {
-			returnObject = eventPropertyArray_Obj[(int)_evt];
+	public static void BroadcastGoalScored(Team _scoringTeam) {
+		foreach (MonoBehaviour _subscriber in evtGoalScoredSubscribers) {
+			_subscriber.SendMessage ("_OnGoalScored",_scoringTeam);
 		}
+	}
 
-		return returnObject;
+	public static void BroadcastPlayerShot() {
+		foreach (MonoBehaviour _subscriber in evtPlayerShotSubscribers) {
+			_subscriber.SendMessage ("_OnPlayerShot");
+		}
+	}
+
+	public static void BroadcastPlayerPossessBall() {
+		foreach (MonoBehaviour _subscriber in evtPlayerPossessBallSubscribers) {
+			_subscriber.SendMessage ("_OnPlayerBallPossession");
+		}
+	}
+
+	public static void BroadcastPlayerMoved(object[] _TeamAndPlayer) {
+		foreach (MonoBehaviour _subscriber in evtPlayerMovedSubscribers) {
+			_subscriber.SendMessage ("_OnPlayerMoved",_TeamAndPlayer);
+		}
 	}
 }

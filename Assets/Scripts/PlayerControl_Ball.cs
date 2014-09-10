@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class PlayerControl_Ball : MonoBehaviour {
@@ -35,8 +35,7 @@ public class PlayerControl_Ball : MonoBehaviour {
 			hasABall = true;
 			ball = coll.gameObject.GetComponent<Ball>();
 			ball.OnPossession(this, coll);
-			GameEvents.TriggerEvent (GameEvents.GameEvent.EVT_PLAYER_POSSESS_BALL);
-			GameEvents_2.BroadcastPlayerPossessBall();
+			GameEvents.BroadcastPlayerPossessBall();
 
 			if( pc_mvmnt.playerCtrlIndex >= 0 ) {
 				InputHandler.RefreshStart(pc_mvmnt.playerCtrlIndex);
@@ -46,8 +45,7 @@ public class PlayerControl_Ball : MonoBehaviour {
 	
 	void Shoot(Vector2 _dir) {
 		ball.OnKick(_dir);
-		GameEvents.TriggerEvent (GameEvents.GameEvent.EVT_PLAYER_SHOOT);
-		GameEvents_2.BroadcastPlayerShot ();
+		GameEvents.BroadcastPlayerShot ();
 		StartCoroutine (this.OnCoolDown ());
 	}
 	

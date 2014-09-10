@@ -17,13 +17,13 @@ public class GameMode_RuleSet2 : GameMode {
 //		}
 	}
 
-	protected override void _OnGoalScored2(Team _scoringTeam) {
+	protected override void _OnGoalScored(Team _scoringTeam) {
 		GetOppositeTeam(_scoringTeam).AddScore();
 		_scoringTeam.GiveBallToGoalKeeper(_scoringTeam.teamGoal.GetBall);
 		UpdateScoreText (teams [0].Score, teams [1].Score);
 	}
 	
-	protected override void _OnPlayerShot2 () {
+	protected override void _OnPlayerShot () {
 		for( int i=0; i<teams.Length; ++i ) {
 			if( teams[i].isInPossession ) {
 				teams[i].DisableLastPlayerWithBall();
@@ -31,7 +31,7 @@ public class GameMode_RuleSet2 : GameMode {
 		}
 	}
 	
-	protected override void _OnPlayerBallPossession2() {
+	protected override void _OnPlayerBallPossession() {
 		int prevTeamInPossession = (teams[0].isInPossession)? 0:
 									(teams[1].isInPossession)? 1: -1;
 		int newTeamInPossession = -1;
@@ -51,7 +51,7 @@ public class GameMode_RuleSet2 : GameMode {
 		}
 	}
 	
-	protected override void _OnPlayerMoved2 (object[] _TeamAndPlayer) {
+	protected override void _OnPlayerMoved (object[] _TeamAndPlayer) {
 		teams[(int)_TeamAndPlayer[0]].DisablePlayerMovement((int)_TeamAndPlayer[1]);
 	}
 	

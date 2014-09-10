@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Goal : MonoBehaviour {
@@ -21,7 +21,7 @@ public class Goal : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D c) {
 		if (c.tag == "Ball") {
 			ball = c.gameObject;
-			GameEvents_2.BroadcastGoalScored(myTeam);
+			GameEvents.BroadcastGoalScored(myTeam);
 		}
 	}
 }

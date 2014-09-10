@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GameMode_RuleSet1 : GameMode {
 
-	void Start() {
+	void _OnStart() {
 		numOfGoalsToWin = 3;
 		goalCount = new int[(int)TeamSide.COUNT];
 	}
@@ -17,7 +17,7 @@ public class GameMode_RuleSet1 : GameMode {
 		}
 	}
 	
-	protected override void _OnPlayerShoot () {
+	protected override void _OnPlayerShot () {
 		for( int i=0; i<teams.Length; ++i ) {
 			if( teams[i].isInPossession ) {
 				teams[i].DisableLastPlayerWithBall();
@@ -34,8 +34,9 @@ public class GameMode_RuleSet1 : GameMode {
 		}
 	}
 	
-	protected override void _OnGoalScored2(Team _scoringTeam) {
+	protected override void _OnGoalScored(Team _scoringTeam) {
 		GetOppositeTeam(_scoringTeam).AddScore();
+		_scoringTeam.GiveBallToGoalKeeper(_scoringTeam.teamGoal.GetBall);
 		UpdateScoreText (teams [0].Score, teams [1].Score);
 	}
 	
