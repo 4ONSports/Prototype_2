@@ -17,6 +17,13 @@ public class GameEvents : MonoBehaviour {
 	private static List<MonoBehaviour> evtPlayerPossessBallSubscribers = new List<MonoBehaviour>();
 	private static List<MonoBehaviour> evtPlayerMovedSubscribers = new List<MonoBehaviour>();
 
+	void Awake() {
+		evtGoalScoredSubscribers.Clear ();
+		evtPlayerShotSubscribers.Clear ();
+		evtPlayerPossessBallSubscribers.Clear ();
+		evtPlayerMovedSubscribers.Clear ();
+	}
+
 	public static void SubscribeToEvent(GameEvent _gameEvent, MonoBehaviour _subscriber) {
 		switch(_gameEvent)
 		{
