@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public enum TeamSide {
 	INVALID = -1,
@@ -21,6 +22,7 @@ public class Team : MonoBehaviour {
 	private int lastPlayerWithBallIndex = -1;
 	private int score = 0;
 	private GameObject goalKeeper;
+	private List<Vector3> teamStartingPosition = new List<Vector3> ();
 
 	public int Score
 	{
@@ -34,6 +36,7 @@ public class Team : MonoBehaviour {
 		for( int i=0; i<players.Length; ++i ) {
 			pc_balls[i] = players[i].GetComponent<PlayerControl_Ball>();
 			pc_mvmnts[i] = players[i].GetComponent<PlayerControl_Movement>();
+			teamStartingPosition.Add (players[i].transform.position);
 			pc_mvmnts[i].playerTeamSide = side;
 			pc_mvmnts[i].playerIndexPosOnTeam = i;
 		}
@@ -111,5 +114,11 @@ public class Team : MonoBehaviour {
 			}
 		}
 		return index;
+	}
+
+	public void ResetTeamPosition () {
+		for (int i=0; i<players.Length; ++i) {
+			players[i].transform.position = teamStartingPosition[i];
+		}
 	}
 }
