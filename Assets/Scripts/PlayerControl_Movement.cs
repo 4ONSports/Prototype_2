@@ -14,15 +14,17 @@ public class PlayerControl_Movement : MonoBehaviour {
 	public TeamSide playerTeamSide = TeamSide.INVALID;
 	public int playerIndexPosOnTeam = -1;
 	[SerializeField] public bool disable = false;
+	public float minDistBtwTeamPlayers = 0.0f;
 
 	private PlayerControl_Ball pcBall = null;
 	private bool playerCtrlIndexReordered = false;
-	[SerializeField] private GameObject movementLimitObj;
+	[SerializeField] public GameObject movementLimitObj;
 	[SerializeField] private Color movementLimitObj_DefaultColor = new Color(1,1,1,0.01f);
 	[SerializeField] private Color movementLimitObj_NoMvmntColor = new Color(1,0,0,0.01f);
 	[SerializeField] private float scaleDiff = 0.0f;
 	[SerializeField] private Vector3 initMvmntTransform = Vector3.zero;
 	[SerializeField] private bool movePlayer = false;
+	[SerializeField] public bool cancelPlayerMove = false;
 	[SerializeField] private Vector3 newPos = Vector3.zero;
 
 	// Use this for initialization
@@ -33,8 +35,9 @@ public class PlayerControl_Movement : MonoBehaviour {
 		movementLimitObj = null;
 		if( transform.Find ("MoveLimit")!=null ) {
 			movementLimitObj = transform.Find ("MoveLimit").gameObject;
-			movementLimitObj.renderer.enabled = false;
+//			movementLimitObj.renderer.enabled = false;
 			scaleDiff = (movementLimitObj.transform.lossyScale.x - transform.lossyScale.x) / 2.0f;
+			minDistBtwTeamPlayers = movementLimitObj.transform.lossyScale.x/2.0f + transform.lossyScale.x/2.0f;
 		}
 		
 		if( !InputHandler.useTouch ) {
@@ -63,11 +66,14 @@ public class PlayerControl_Movement : MonoBehaviour {
 				if( movementLimitObj != null ) {
 					movementLimitObj.transform.position = transform.position;
 					movementLimitObj.transform.parent = transform;
-					movementLimitObj.renderer.enabled = false;
+//					movementLimitObj.renderer.enabled = false;
 				}
-				if( movePlayer ) {
-					int[] obj = {(int)playerTeamSide, playerIndexPosOnTeam};
+				if( movePlayer && !cancelPlayerMove ) {
 					GameEvents.BroadcastPlayerMoved(new object[]{playerTeamSide,playerIndexPosOnTeam});
+				}
+				if ( cancelPlayerMove) {
+					transform.position = initMvmntTransform;
+					cancelPlayerMove = false;
 				}
 				movePlayer = false;
 
@@ -86,6 +92,8 @@ public class PlayerControl_Movement : MonoBehaviour {
 //						forceAdded = true;
 //						this.rigidbody2D.AddForce (InputHandler.swipeInfo[playerCtrlIndex].swipe_direction * playerMovementSpeed);
 					}
+
+					GameEvents.BroadcastPlayerDeselected(new object[]{playerTeamSide,playerIndexPosOnTeam});
 				}
 				else if( i==0 && playerCtrlIndex>0 ) {
 					--playerCtrlIndex;
@@ -108,11 +116,13 @@ public class PlayerControl_Movement : MonoBehaviour {
 						initMvmntTransform.z = transform.position.z;
 						movementLimitObj.renderer.enabled = true;
 						if( disable ) {
-							movementLimitObj.renderer.material.color = movementLimitObj_NoMvmntColor;
+//							movementLimitObj.renderer.material.color = movementLimitObj_NoMvmntColor;
 						}
 						else {
-							movementLimitObj.renderer.material.color = movementLimitObj_DefaultColor;
+//							movementLimitObj.renderer.material.color = movementLimitObj_DefaultColor;
 						}
+
+						GameEvents.BroadcastPlayerSelected(new object[]{playerTeamSide,playerIndexPosOnTeam});
 					}
 				}
 			}
@@ -166,9 +176,17 @@ public class PlayerControl_Movement : MonoBehaviour {
 		}
 	}
 
+	public void MoveToPrevPos () {
+		cancelPlayerMove = true;
+	}
+
 	void FixedUpdate () {
 		if( movePlayer ) {
 			rigidbody2D.MovePosition(newPos);
 		}
+//		if (!movePlayer && cancelPlayerMove) {
+//			rigidbody2D.MovePosition(initMvmntTransform);
+//			cancelPlayerMove = false;
+//		}
 	}
 }

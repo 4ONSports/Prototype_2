@@ -9,6 +9,10 @@ public class GameMode_RuleSet2 : GameMode {
 
 	private float currentTime = 0;
 	private bool movePhase = true;
+	private bool playerMoving = false;
+	private int selectedPlayerTeam = -1;
+	private int selectedPlayerIndex = -1;
+	private bool cancelMove = false;
 
 	protected override void _OnStart() {
 		ResetTimer ();
@@ -18,6 +22,10 @@ public class GameMode_RuleSet2 : GameMode {
 	}
 	
 	protected override void _OnUpdate () {
+		if( playerMoving ) {
+			CheckValidPlayerMovement();
+		}
+
 		if(movePhase) {
 			currentTime -= Time.deltaTime;
 			timerText.text = (int)currentTime + "";
@@ -25,6 +33,63 @@ public class GameMode_RuleSet2 : GameMode {
 				DisabelAllPlayers();
 				movePhase = false;
 			}
+		}
+	}
+	
+	protected override void _OnPlayerSelected (object[] _TeamAndPlayer) {
+		if( (int)_TeamAndPlayer[0] >= 0 && (int)_TeamAndPlayer[1] >= 0 ) {
+			playerMoving = true;
+			selectedPlayerTeam = (int)_TeamAndPlayer[0];
+			selectedPlayerIndex = (int)_TeamAndPlayer[1];
+			PlayerControl_Movement plyr = teams[selectedPlayerTeam].players[selectedPlayerIndex].GetComponent<PlayerControl_Movement>();
+			if( plyr.disable ) {
+				playerMoving = false;
+				selectedPlayerTeam = -1;
+				selectedPlayerIndex = -1;
+			}
+		}
+		// else assert error
+	}
+	
+	protected override void _OnPlayerDeselected (object[] _TeamAndPlayer) {
+		if( (int)_TeamAndPlayer[0] == selectedPlayerTeam && (int)_TeamAndPlayer[1] == selectedPlayerIndex ) {
+			if( cancelMove ) {
+//				Debug.Log ("Cannot Move here");
+//				PlayerControl_Movement plyr = teams[selectedPlayerTeam].players[selectedPlayerIndex].GetComponent<PlayerControl_Movement>();
+//				cancelMove = false;
+//				plyr.MoveToPrevPos();
+			}
+			playerMoving = false;
+			selectedPlayerTeam = -1;
+			selectedPlayerIndex = -1;
+		}
+		// else assert error
+	}
+	
+	void CheckValidPlayerMovement () {
+		bool validPosition = true;
+
+		PlayerControl_Movement plyr = teams[selectedPlayerTeam].players[selectedPlayerIndex].GetComponent<PlayerControl_Movement>();
+		for( int i=0; i<teams[selectedPlayerTeam].players.Length; ++i ) {
+			if( selectedPlayerIndex != i ) {
+				PlayerControl_Movement teamMate = teams[selectedPlayerTeam].players[i].GetComponent<PlayerControl_Movement>();
+				float distBtwPlayers = (plyr.transform.position-teamMate.transform.position).magnitude;
+				if( distBtwPlayers < plyr.minDistBtwTeamPlayers ) {
+					validPosition = false;
+//					plyr.movementLimitObj.renderer.enabled = false;
+				}
+			}
+		}
+
+		if( !validPosition ) {
+			cancelMove = true;
+			plyr.movementLimitObj.renderer.material.color = new Color(1,1,0,0.17f);
+			plyr.cancelPlayerMove = true;
+		}
+		else {
+			cancelMove = false;
+			plyr.movementLimitObj.renderer.material.color = new Color(1,1,1,0.17f);
+			plyr.cancelPlayerMove = false;
 		}
 	}
 

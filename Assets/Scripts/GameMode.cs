@@ -15,6 +15,8 @@ public class GameMode : MonoBehaviour {
 		GameEvents.SubscribeToEvent (GameEvents.GameEvent.EVT_PLAYER_SHOOT, this);
 		GameEvents.SubscribeToEvent (GameEvents.GameEvent.EVT_PLAYER_POSSESS_BALL, this);
 		GameEvents.SubscribeToEvent (GameEvents.GameEvent.EVT_PLAYER_MOVED, this);
+		GameEvents.SubscribeToEvent (GameEvents.GameEvent.EVT_PLAYER_SELECTED, this);
+		GameEvents.SubscribeToEvent (GameEvents.GameEvent.EVT_PLAYER_DESELECTED, this);
 	}
 	
 	void Update () {
@@ -67,5 +69,11 @@ public class GameMode : MonoBehaviour {
 	}
 	
 	protected virtual void _OnPlayerMoved(object[] _TeamAndPlayer) {
+	}
+	
+	protected virtual void _OnPlayerSelected(object[] _TeamAndPlayer) {
+	}
+	
+	protected virtual void _OnPlayerDeselected(object[] _TeamAndPlayer) {
 	}
 }

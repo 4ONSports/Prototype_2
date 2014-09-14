@@ -9,6 +9,8 @@ public class GameEvents : MonoBehaviour {
 		EVT_PLAYER_SHOOT,
 		EVT_PLAYER_POSSESS_BALL,
 		EVT_PLAYER_MOVED,
+		EVT_PLAYER_SELECTED,
+		EVT_PLAYER_DESELECTED,
 		COUNT
 	}
 
@@ -16,12 +18,16 @@ public class GameEvents : MonoBehaviour {
 	private static List<MonoBehaviour> evtPlayerShotSubscribers = new List<MonoBehaviour>();
 	private static List<MonoBehaviour> evtPlayerPossessBallSubscribers = new List<MonoBehaviour>();
 	private static List<MonoBehaviour> evtPlayerMovedSubscribers = new List<MonoBehaviour>();
+	private static List<MonoBehaviour> evtPlayerSelectedSubscribers = new List<MonoBehaviour>();
+	private static List<MonoBehaviour> evtPlayerDeselectedSubscribers = new List<MonoBehaviour>();
 
 	void Awake() {
 		evtGoalScoredSubscribers.Clear ();
 		evtPlayerShotSubscribers.Clear ();
 		evtPlayerPossessBallSubscribers.Clear ();
 		evtPlayerMovedSubscribers.Clear ();
+		evtPlayerSelectedSubscribers.Clear ();
+		evtPlayerDeselectedSubscribers.Clear ();
 	}
 
 	public static void SubscribeToEvent(GameEvent _gameEvent, MonoBehaviour _subscriber) {
@@ -38,6 +44,12 @@ public class GameEvents : MonoBehaviour {
 			break;
 		case GameEvent.EVT_PLAYER_MOVED:
 			evtPlayerMovedSubscribers.Add(_subscriber);
+			break;
+		case GameEvent.EVT_PLAYER_SELECTED:
+			evtPlayerSelectedSubscribers.Add(_subscriber);
+			break;
+		case GameEvent.EVT_PLAYER_DESELECTED:
+			evtPlayerDeselectedSubscribers.Add(_subscriber);
 			break;
 		}
 	}
@@ -59,10 +71,22 @@ public class GameEvents : MonoBehaviour {
 			_subscriber.SendMessage ("_OnPlayerBallPossession");
 		}
 	}
-
+	
 	public static void BroadcastPlayerMoved(object[] _TeamAndPlayer) {
 		foreach (MonoBehaviour _subscriber in evtPlayerMovedSubscribers) {
 			_subscriber.SendMessage ("_OnPlayerMoved",_TeamAndPlayer);
+		}
+	}
+	
+	public static void BroadcastPlayerSelected(object[] _TeamAndPlayer) {
+		foreach (MonoBehaviour _subscriber in evtPlayerMovedSubscribers) {
+			_subscriber.SendMessage ("_OnPlayerSelected",_TeamAndPlayer);
+		}
+	}
+	
+	public static void BroadcastPlayerDeselected(object[] _TeamAndPlayer) {
+		foreach (MonoBehaviour _subscriber in evtPlayerMovedSubscribers) {
+			_subscriber.SendMessage ("_OnPlayerDeselected",_TeamAndPlayer);
 		}
 	}
 }
