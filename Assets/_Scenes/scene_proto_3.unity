@@ -262,7 +262,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_Name
@@ -519,7 +519,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_Name
@@ -847,7 +847,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
 --- !u!1 &427776488
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,6 +1047,67 @@ Transform:
   - {fileID: 1389712904}
   m_Father: {fileID: 0}
   m_RootOrder: 6
+--- !u!1 &569888998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 569889001}
+  - 114: {fileID: 569889000}
+  - 114: {fileID: 569888999}
+  m_Layer: 0
+  m_Name: GameMode_R3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &569888999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 569888998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 861b7db80bae4cc468901023ad8166b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &569889000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 569888998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30e285ba1f8d2a54082a761c840ad81b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numOfGoalsToWin: 0
+  goalCount: 
+  teams:
+  - {fileID: 247531806}
+  - {fileID: 1389712905}
+  scoreText: {fileID: 1744758161}
+  timerText: {fileID: 401368709}
+  winText: {fileID: 1368670644}
+  totalTurnTimeSeconds: 10
+  numberOfMovments: 1
+--- !u!4 &569889001
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 569888998}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
 --- !u!1 &665110928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1280,7 +1341,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d94ebdc46e00ce14c81d7ec41388432e, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d94ebdc46e00ce14c81d7ec41388432e, type: 2}
@@ -1324,7 +1385,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_Name
@@ -1432,6 +1493,7 @@ MonoBehaviour:
   ball: {fileID: 0}
   hasABall: 0
   disable: 0
+  cannotReceiveBall: 0
   minSwipeDistanceToShoot_Touch: 25
   minSwipeDistanceToShoot_Mouse: 25
   minSwipeDistanceToShoot: 25
@@ -1726,6 +1788,7 @@ MonoBehaviour:
   ball: {fileID: 0}
   hasABall: 0
   disable: 0
+  cannotReceiveBall: 0
   minSwipeDistanceToShoot_Touch: 25
   minSwipeDistanceToShoot_Mouse: 25
   minSwipeDistanceToShoot: 25
@@ -1895,7 +1958,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1042311641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1976,7 +2039,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_Materials.Array.data[0]
@@ -2075,6 +2138,7 @@ MonoBehaviour:
   ball: {fileID: 0}
   hasABall: 0
   disable: 0
+  cannotReceiveBall: 0
   minSwipeDistanceToShoot_Touch: 25
   minSwipeDistanceToShoot_Mouse: 25
   minSwipeDistanceToShoot: 25
@@ -2217,7 +2281,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_Name
@@ -2491,7 +2555,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_Materials.Array.data[0]
@@ -3071,7 +3135,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_Name
@@ -3175,6 +3239,7 @@ MonoBehaviour:
   ball: {fileID: 0}
   hasABall: 0
   disable: 0
+  cannotReceiveBall: 0
   minSwipeDistanceToShoot_Touch: 25
   minSwipeDistanceToShoot_Mouse: 25
   minSwipeDistanceToShoot: 25
@@ -3338,7 +3403,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
 --- !u!1 &1389712903
 GameObject:
   m_ObjectHideFlags: 0
@@ -3689,6 +3754,7 @@ MonoBehaviour:
   ball: {fileID: 0}
   hasABall: 0
   disable: 0
+  cannotReceiveBall: 0
   minSwipeDistanceToShoot_Touch: 25
   minSwipeDistanceToShoot_Mouse: 25
   minSwipeDistanceToShoot: 25
@@ -3909,7 +3975,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_Name
@@ -4179,6 +4245,7 @@ MonoBehaviour:
   ball: {fileID: 0}
   hasABall: 0
   disable: 0
+  cannotReceiveBall: 0
   minSwipeDistanceToShoot_Touch: 25
   minSwipeDistanceToShoot_Mouse: 25
   minSwipeDistanceToShoot: 25
@@ -4497,7 +4564,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
 --- !u!1 &1772334750
 GameObject:
   m_ObjectHideFlags: 0
@@ -4614,6 +4681,7 @@ MonoBehaviour:
   ball: {fileID: 0}
   hasABall: 0
   disable: 0
+  cannotReceiveBall: 0
   minSwipeDistanceToShoot_Touch: 25
   minSwipeDistanceToShoot_Mouse: 25
   minSwipeDistanceToShoot: 25
@@ -4768,6 +4836,7 @@ MonoBehaviour:
   ball: {fileID: 0}
   hasABall: 0
   disable: 0
+  cannotReceiveBall: 0
   minSwipeDistanceToShoot_Touch: 25
   minSwipeDistanceToShoot_Mouse: 25
   minSwipeDistanceToShoot: 25
@@ -4897,7 +4966,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_Name
@@ -4997,7 +5066,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e8c20f65cd4a0ec4485bce5f7497fcce, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e8c20f65cd4a0ec4485bce5f7497fcce, type: 2}
@@ -5040,6 +5109,7 @@ MonoBehaviour:
   ball: {fileID: 0}
   hasABall: 0
   disable: 0
+  cannotReceiveBall: 0
   minSwipeDistanceToShoot_Touch: 25
   minSwipeDistanceToShoot_Mouse: 25
   minSwipeDistanceToShoot: 25
@@ -5182,7 +5252,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 5abf022e51e5d2248b6342ef140d781e, type: 2}
       propertyPath: m_Name
@@ -5500,7 +5570,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d54f907108dad674eb3272d50eba9576, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d54f907108dad674eb3272d50eba9576, type: 2}
@@ -5667,6 +5737,7 @@ MonoBehaviour:
   ball: {fileID: 0}
   hasABall: 0
   disable: 0
+  cannotReceiveBall: 0
   minSwipeDistanceToShoot_Touch: 25
   minSwipeDistanceToShoot_Mouse: 25
   minSwipeDistanceToShoot: 25

@@ -6,6 +6,7 @@ public class PlayerControl_Ball : MonoBehaviour {
 	[HideInInspector] public Ball ball = null;
 	[SerializeField] public bool hasABall = false;
 	[SerializeField] public bool disable = false;
+	[SerializeField] public bool cannotReceiveBall = false;
 	[SerializeField] public float minSwipeDistanceToShoot_Touch = 1.0f;
 	[SerializeField] public float minSwipeDistanceToShoot_Mouse = 1.0f;
 
@@ -27,7 +28,7 @@ public class PlayerControl_Ball : MonoBehaviour {
 	}
 	
 	void OnCollisionEnter2D(Collision2D coll) {
-		if( hasABall || disable ) {
+		if( hasABall || cannotReceiveBall ) {
 			return;
 		}
 
@@ -44,13 +45,15 @@ public class PlayerControl_Ball : MonoBehaviour {
 	}
 	
 	void Shoot(Vector2 _dir) {
-		ball.OnKick(_dir);
-		GameEvents.BroadcastPlayerShot ();
-		StartCoroutine (this.OnCoolDown ());
+		if(!disable) {
+			ball.OnKick(_dir);
+			GameEvents.BroadcastPlayerShot ();
+			StartCoroutine (this.OnCoolDown ());
+		}
 	}
 	
 	public void CheckForShoot(int _index) {
-		if( InputHandler.swipeInfo[_index].swipe_state == InputHandler.SwipeState.END ) {
+		if( InputHandler.swipeInfo[_index].swipe_state == InputHandler.SwipeState.END && !disable ) {
 			if ( pc_mvmnt.playerSelect && !InputHandler.swipeInfo[_index].isTap ) {
 				if( ball != null && InputHandler.swipeInfo[_index].swipe_length >= minSwipeDistanceToShoot ) {
 					Vector3 tempStartPos = Camera.main.ScreenToWorldPoint(InputHandler.swipeInfo[_index].swipe_startPos);

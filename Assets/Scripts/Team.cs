@@ -75,15 +75,32 @@ public class Team : MonoBehaviour {
 			}
 		}
 	}
+
+	public void DisbaleAllPlayerMovmentsAndBalls () {
+		for( int i=0; i<players.Length; ++i ) {
+			pc_mvmnts[i].disable = true;
+			pc_balls[i].disable = true;
+		}
+	}
 	
 	public void DisableAllPlayerMovements () {
 		for( int i=0; i<players.Length; ++i ) {
 			pc_mvmnts[i].disable = true;
 		}
 	}
+
+	public void DisableAllPlayerBalls () {
+		for( int i=0; i<players.Length; ++i ) {
+			pc_balls[i].disable = true;
+		}
+	}
 	
 	public void DisablePlayerMovement ( int index ) {
 		pc_mvmnts[index].disable = true;
+	}
+
+	public void DisablePlayerBall ( int index ) {
+		pc_balls[index].disable = true;
 	}
 
 	public void AddScore()  {

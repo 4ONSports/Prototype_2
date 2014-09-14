@@ -72,7 +72,7 @@ public class PlayerControl_Movement : MonoBehaviour {
 				movePlayer = false;
 
 				if( playerCtrlIndex == i ) {
-					if( pcBall.hasABall && playerSelect ) {
+					if( pcBall.hasABall && playerSelect && !pcBall.disable ) {
 						pcBall.CheckForShoot(playerCtrlIndex);
 						playerCtrlIndex = -1;
 						playerSelect = false;

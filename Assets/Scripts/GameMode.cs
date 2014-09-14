@@ -28,6 +28,19 @@ public class GameMode : MonoBehaviour {
 		return teams[0];
 	}
 
+	public Team GetTeamByTeamSide (TeamSide _teamSide) {
+		foreach(Team t in teams) {
+			if(t.side == _teamSide) return t;
+		}
+		Debug.LogError ("Not able to find TeamSide for any of the teams in memory.");
+		return teams [0];
+	}
+
+	public Color GetTeamColorByTeamSide (TeamSide _teamSide) {
+		if(_teamSide == 0) return Color.blue;
+		else return Color.red;
+	}
+
 	public void UpdateScoreText(int scoreHome, int scoreAway) {
 		if(!scoreText)return;
 		string h = "";
