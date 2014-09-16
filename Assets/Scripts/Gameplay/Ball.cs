@@ -10,11 +10,14 @@ public class Ball : MonoBehaviour {
 	void Start() {
 		this.rigidbody2D.AddForce (new Vector2(-100,0));
 	}
-	
-	public void OnPossession (Vector3 _ownerPosition) {
+
+	public void OnPossession (PlayerControl_Ball _pcBall, Vector3 _ownerPosition) {
 		this.rigidbody2D.velocity *= 0;
+		this.rigidbody2D.angularVelocity *= 0;
 		this.rigidbody2D.isKinematic = true;
-		transform.position = _ownerPosition;
+		ballOwner = _pcBall;
+		this.transform.parent = _pcBall.transform;
+		this.transform.position = _ownerPosition;
 	}
 	
 	public void OnPossession (PlayerControl_Ball _pcBall, Collision2D _coll) {

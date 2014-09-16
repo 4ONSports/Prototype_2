@@ -48,7 +48,7 @@ public class GameMode : MonoBehaviour {
 		string h = "";
 		string t = "";
 		if(scoreHome<10)h+= "0";
-		t+= "  ";
+		t+= "             ";
 		if(scoreAway<10)t+= "0";
 		this.scoreText.text = h + scoreHome + t + scoreAway;
 	}

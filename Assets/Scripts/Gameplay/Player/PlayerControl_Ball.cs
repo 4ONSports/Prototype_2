@@ -35,7 +35,8 @@ public class PlayerControl_Ball : MonoBehaviour {
 		if (coll.gameObject.tag == "Ball" ) {
 			hasABall = true;
 			ball = coll.gameObject.GetComponent<Ball>();
-			ball.OnPossession(this, coll);
+//			ball.OnPossession(this, coll);
+			ball.OnPossession(this, transform.position);
 			GameEvents.BroadcastPlayerPossessBall();
 
 			if( pc_mvmnt.playerCtrlIndex >= 0 ) {

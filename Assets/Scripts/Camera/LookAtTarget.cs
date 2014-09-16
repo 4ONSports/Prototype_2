@@ -6,7 +6,7 @@ public class LookAtTarget : MonoBehaviour {
 	public Transform targetToLookAt = null;
 
 	void Start() {
-		Screen.orientation = ScreenOrientation.Portrait;
+//		Screen.orientation = ScreenOrientation.Portrait;
 	}
 	
 	void Update () {
