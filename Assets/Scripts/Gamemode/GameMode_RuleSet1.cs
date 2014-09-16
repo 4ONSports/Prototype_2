@@ -5,7 +5,6 @@ public class GameMode_RuleSet1 : GameMode {
 
 	void _OnStart() {
 		numOfGoalsToWin = 3;
-		goalCount = new int[(int)TeamSide.COUNT];
 	}
 	
 	protected override void _OnUpdate () {

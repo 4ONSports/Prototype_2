@@ -3,10 +3,10 @@ using System.Collections;
 
 public class GameMode : MonoBehaviour {
 	public int numOfGoalsToWin = 0;
-	public int[] goalCount;
 	public Team[] teams;
 
 	public TextMesh scoreText = null;
+	protected bool gameOver = false;
 
 
 	void Start() {
@@ -75,5 +75,12 @@ public class GameMode : MonoBehaviour {
 	}
 	
 	protected virtual void _OnPlayerDeselected(object[] _TeamAndPlayer) {
+	}
+	
+	public void Restart() {
+		_Restart ();
+	}
+	
+	protected virtual void _Restart() {
 	}
 }

@@ -17,7 +17,6 @@ public class GameMode_RuleSet2 : GameMode {
 	protected override void _OnStart() {
 		ResetTimer ();
 		numOfGoalsToWin = 3;
-		goalCount = new int[(int)TeamSide.COUNT];
 		winText.text = "";
 	}
 	

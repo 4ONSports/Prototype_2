@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class GameDebug : MonoBehaviour {
-
+	
+	public GameMode activeGameMode;
 	public static bool enableDebugLines = false;
 	[SerializeField] private PlayerControl_Movement[] pc_mvmnts;
 
@@ -33,7 +34,10 @@ public class GameDebug : MonoBehaviour {
 		}
 	}
 	
-	public static void Restart() {
-		Application.LoadLevel (Application.loadedLevel);
+	public void Restart() {
+//		Application.LoadLevel (Application.loadedLevel);
+		if( activeGameMode != null ) {
+			activeGameMode.Restart();
+		}
 	}
 }

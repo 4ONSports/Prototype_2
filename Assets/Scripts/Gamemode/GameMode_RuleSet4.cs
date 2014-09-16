@@ -18,8 +18,6 @@ public class GameMode_RuleSet4 : GameMode {
 
 	protected override void _OnStart() {
 		ResetTimer ();
-		numOfGoalsToWin = 3;
-		goalCount = new int[(int)TeamSide.COUNT];
 		winText.text = "";
 		StartCoroutine (LateStart ());
 	}
@@ -34,12 +32,14 @@ public class GameMode_RuleSet4 : GameMode {
 			CheckValidPlayerMovement();
 		}
 
+		if( !gameOver ) {
 			currentTime -= Time.deltaTime;
 			timerText.text = (int)currentTime + "";
-		timerText.color = GetTeamColorByTeamSide (teamOfTheTurn);
+			timerText.color = GetTeamColorByTeamSide (teamOfTheTurn);
 			if(currentTime < 0){
 				NewTurn();
 			}
+		}
 	}
 	
 	protected override void _OnPlayerSelected (object[] _TeamAndPlayer) {
@@ -181,10 +181,19 @@ public class GameMode_RuleSet4 : GameMode {
 				}
 			}
 		}
+		gameOver = true;
 		yield return new WaitForSeconds (2);
-		winText.text = "";
+//		winText.text = "";
+//		ResetScore ();
+//		ResetAllPlayersPositions ();
+//		NewTurn ();
+	}
+	
+	protected override void _Restart() {
+		ResetTimer ();
 		ResetScore ();
-		ResetAllPlayersPositions ();
-		NewTurn ();
+		gameOver = false;
+		winText.text = "";
+		StartCoroutine (LateStart ());
 	}
 }
