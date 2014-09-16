@@ -11,16 +11,40 @@ public class GameMode : MonoBehaviour {
 
 	void Start() {
 		_OnStart ();
-		GameEvents.SubscribeToEvent (GameEvents.GameEvent.EVT_GOAL_SCORED, this);
-		GameEvents.SubscribeToEvent (GameEvents.GameEvent.EVT_PLAYER_SHOOT, this);
-		GameEvents.SubscribeToEvent (GameEvents.GameEvent.EVT_PLAYER_POSSESS_BALL, this);
-		GameEvents.SubscribeToEvent (GameEvents.GameEvent.EVT_PLAYER_MOVED, this);
-		GameEvents.SubscribeToEvent (GameEvents.GameEvent.EVT_PLAYER_SELECTED, this);
-		GameEvents.SubscribeToEvent (GameEvents.GameEvent.EVT_PLAYER_DESELECTED, this);
+		GameEventsHandler.SubscribeToEvent (EGameEvent.EVT_GOAL_SCORED, this);
+		GameEventsHandler.SubscribeToEvent (EGameEvent.EVT_PLAYER_SHOOT, this);
+		GameEventsHandler.SubscribeToEvent (EGameEvent.EVT_PLAYER_POSSESS_BALL, this);
+		GameEventsHandler.SubscribeToEvent (EGameEvent.EVT_PLAYER_MOVED, this);
+		GameEventsHandler.SubscribeToEvent (EGameEvent.EVT_PLAYER_SELECTED, this);
+		GameEventsHandler.SubscribeToEvent (EGameEvent.EVT_PLAYER_DESELECTED, this);
 	}
 	
 	void Update () {
 		_OnUpdate ();
+	}
+
+	public void HandleEvent(GameEvent _event) {
+		switch(_event.gameEvent)
+		{
+		case EGameEvent.EVT_GOAL_SCORED:
+			_OnGoalScored((Team)_event.gameEventProperty);
+			break;
+		case EGameEvent.EVT_PLAYER_SHOOT:
+			_OnPlayerShot();
+			break;
+		case EGameEvent.EVT_PLAYER_POSSESS_BALL:
+			_OnPlayerBallPossession();
+			break;
+		case EGameEvent.EVT_PLAYER_MOVED:
+			_OnPlayerMoved((object[])_event.gameEventProperty);
+			break;
+		case EGameEvent.EVT_PLAYER_SELECTED:
+			_OnPlayerSelected((object[])_event.gameEventProperty);
+			break;
+		case EGameEvent.EVT_PLAYER_DESELECTED:
+			_OnPlayerDeselected((object[])_event.gameEventProperty);
+			break;
+		}
 	}
 
 	public Team GetOppositeTeam (Team _team) {

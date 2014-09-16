@@ -35,7 +35,6 @@ public class GameDebug : MonoBehaviour {
 	}
 	
 	public void Restart() {
-//		Application.LoadLevel (Application.loadedLevel);
 		if( activeGameMode != null ) {
 			activeGameMode.Restart();
 		}

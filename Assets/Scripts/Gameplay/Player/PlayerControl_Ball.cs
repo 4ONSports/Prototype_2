@@ -37,7 +37,7 @@ public class PlayerControl_Ball : MonoBehaviour {
 			ball = coll.gameObject.GetComponent<Ball>();
 //			ball.OnPossession(this, coll);
 			ball.OnPossession(this, transform.position);
-			GameEvents.BroadcastPlayerPossessBall();
+			GameEventsHandler.BroadcastEvent(EGameEvent.EVT_PLAYER_POSSESS_BALL);
 
 			if( pc_mvmnt.playerCtrlIndex >= 0 ) {
 				InputHandler.RefreshStart(pc_mvmnt.playerCtrlIndex);
@@ -48,7 +48,7 @@ public class PlayerControl_Ball : MonoBehaviour {
 	void Shoot(Vector2 _dir) {
 		if(!disable) {
 			ball.OnKick(_dir);
-			GameEvents.BroadcastPlayerShot ();
+			GameEventsHandler.BroadcastEvent(EGameEvent.EVT_PLAYER_SHOOT);
 			StartCoroutine (this.OnCoolDown ());
 		}
 	}

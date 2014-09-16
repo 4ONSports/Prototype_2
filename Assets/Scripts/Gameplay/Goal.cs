@@ -21,7 +21,7 @@ public class Goal : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D c) {
 		if (c.tag == "Ball") {
 			ball = c.gameObject;
-			GameEvents.BroadcastGoalScored(myTeam);
+			GameEventsHandler.BroadcastEvent(EGameEvent.EVT_GOAL_SCORED, myTeam);
 		}
 	}
 }

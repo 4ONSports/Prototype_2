@@ -69,7 +69,7 @@ public class PlayerControl_Movement : MonoBehaviour {
 //					movementLimitObj.renderer.enabled = false;
 				}
 				if( movePlayer && !cancelPlayerMove ) {
-					GameEvents.BroadcastPlayerMoved(new object[]{playerTeamSide,playerIndexPosOnTeam});
+					GameEventsHandler.BroadcastEvent(EGameEvent.EVT_PLAYER_MOVED, new object[]{playerTeamSide,playerIndexPosOnTeam});
 				}
 				if ( cancelPlayerMove) {
 					transform.position = initMvmntTransform;
@@ -93,7 +93,7 @@ public class PlayerControl_Movement : MonoBehaviour {
 //						this.rigidbody2D.AddForce (InputHandler.swipeInfo[playerCtrlIndex].swipe_direction * playerMovementSpeed);
 					}
 
-					GameEvents.BroadcastPlayerDeselected(new object[]{playerTeamSide,playerIndexPosOnTeam});
+					GameEventsHandler.BroadcastEvent(EGameEvent.EVT_PLAYER_DESELECTED, new object[]{playerTeamSide,playerIndexPosOnTeam});
 				}
 				else if( i==0 && playerCtrlIndex>0 ) {
 					--playerCtrlIndex;
@@ -122,7 +122,7 @@ public class PlayerControl_Movement : MonoBehaviour {
 //							movementLimitObj.renderer.material.color = movementLimitObj_DefaultColor;
 						}
 
-						GameEvents.BroadcastPlayerSelected(new object[]{playerTeamSide,playerIndexPosOnTeam});
+						GameEventsHandler.BroadcastEvent(EGameEvent.EVT_PLAYER_SELECTED, new object[]{playerTeamSide,playerIndexPosOnTeam});
 					}
 				}
 			}
