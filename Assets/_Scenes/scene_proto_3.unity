@@ -425,7 +425,6 @@ MonoBehaviour:
   - {fileID: 1049921618}
   - {fileID: 1910694381}
   - {fileID: 1882371316}
-  - {fileID: 1345651158}
   isInPossession: 0
   goalKeeperIndex: 0
   teamGoal: {fileID: 1285432361}
@@ -847,7 +846,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
 --- !u!1 &427776488
 GameObject:
   m_ObjectHideFlags: 0
@@ -1063,7 +1062,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &569888999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1108,6 +1107,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
+--- !u!1 &593671277
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 593671280}
+  - 114: {fileID: 593671279}
+  - 114: {fileID: 593671278}
+  m_Layer: 0
+  m_Name: GameMode_R4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &593671278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 593671277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 861b7db80bae4cc468901023ad8166b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &593671279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 593671277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdb23a0f7b65c754ca849d662818cd4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numOfGoalsToWin: 0
+  goalCount: 
+  teams:
+  - {fileID: 247531806}
+  - {fileID: 1389712905}
+  scoreText: {fileID: 1744758161}
+  timerText: {fileID: 401368709}
+  winText: {fileID: 1368670644}
+  totalTurnTimeSeconds: 10
+  numberOfMovments: 1
+--- !u!4 &593671280
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 593671277}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
 --- !u!1 &665110928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,7 +1401,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d94ebdc46e00ce14c81d7ec41388432e, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d94ebdc46e00ce14c81d7ec41388432e, type: 2}
@@ -1522,12 +1582,14 @@ MonoBehaviour:
   playerTeamSide: -1
   playerIndexPosOnTeam: -1
   disable: 0
+  minDistBtwTeamPlayers: 0
   movementLimitObj: {fileID: 0}
   movementLimitObj_DefaultColor: {r: 1, g: 1, b: 1, a: .168627456}
   movementLimitObj_NoMvmntColor: {r: 1, g: 0, b: 0, a: .168627456}
   scaleDiff: 0
   initMvmntTransform: {x: 0, y: 0, z: 0}
   movePlayer: 0
+  cancelPlayerMove: 0
   newPos: {x: 0, y: 0, z: 0}
 --- !u!58 &900116998
 CircleCollider2D:
@@ -1817,12 +1879,14 @@ MonoBehaviour:
   playerTeamSide: -1
   playerIndexPosOnTeam: -1
   disable: 0
+  minDistBtwTeamPlayers: 0
   movementLimitObj: {fileID: 0}
   movementLimitObj_DefaultColor: {r: 1, g: 1, b: 1, a: .168627456}
   movementLimitObj_NoMvmntColor: {r: 1, g: 0, b: 0, a: .168627456}
   scaleDiff: 0
   initMvmntTransform: {x: 0, y: 0, z: 0}
   movePlayer: 0
+  cancelPlayerMove: 0
   newPos: {x: 0, y: 0, z: 0}
 --- !u!58 &972260615
 CircleCollider2D:
@@ -2167,12 +2231,14 @@ MonoBehaviour:
   playerTeamSide: -1
   playerIndexPosOnTeam: -1
   disable: 0
+  minDistBtwTeamPlayers: 0
   movementLimitObj: {fileID: 0}
   movementLimitObj_DefaultColor: {r: 1, g: 1, b: 1, a: .168627456}
   movementLimitObj_NoMvmntColor: {r: 1, g: 0, b: 0, a: .168627456}
   scaleDiff: 0
   initMvmntTransform: {x: 0, y: 0, z: 0}
   movePlayer: 0
+  cancelPlayerMove: 0
   newPos: {x: 0, y: 0, z: 0}
 --- !u!58 &1049921621
 CircleCollider2D:
@@ -3268,12 +3334,14 @@ MonoBehaviour:
   playerTeamSide: -1
   playerIndexPosOnTeam: -1
   disable: 0
+  minDistBtwTeamPlayers: 0
   movementLimitObj: {fileID: 0}
   movementLimitObj_DefaultColor: {r: 1, g: 1, b: 1, a: .168627456}
   movementLimitObj_NoMvmntColor: {r: 1, g: 0, b: 0, a: .168627456}
   scaleDiff: 0
   initMvmntTransform: {x: 0, y: 0, z: 0}
   movePlayer: 0
+  cancelPlayerMove: 0
   newPos: {x: 0, y: 0, z: 0}
 --- !u!58 &1345651162
 CircleCollider2D:
@@ -3403,7 +3471,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
 --- !u!1 &1389712903
 GameObject:
   m_ObjectHideFlags: 0
@@ -3454,7 +3522,6 @@ MonoBehaviour:
   - {fileID: 972260612}
   - {fileID: 1699728804}
   - {fileID: 1527964654}
-  - {fileID: 900116994}
   isInPossession: 0
   goalKeeperIndex: 0
   teamGoal: {fileID: 262111436}
@@ -3783,12 +3850,14 @@ MonoBehaviour:
   playerTeamSide: -1
   playerIndexPosOnTeam: -1
   disable: 0
+  minDistBtwTeamPlayers: 0
   movementLimitObj: {fileID: 0}
   movementLimitObj_DefaultColor: {r: 1, g: 1, b: 1, a: .168627456}
   movementLimitObj_NoMvmntColor: {r: 1, g: 0, b: 0, a: .168627456}
   scaleDiff: 0
   initMvmntTransform: {x: 0, y: 0, z: 0}
   movePlayer: 0
+  cancelPlayerMove: 0
   newPos: {x: 0, y: 0, z: 0}
 --- !u!58 &1527964658
 CircleCollider2D:
@@ -4274,12 +4343,14 @@ MonoBehaviour:
   playerTeamSide: -1
   playerIndexPosOnTeam: -1
   disable: 0
+  minDistBtwTeamPlayers: 0
   movementLimitObj: {fileID: 0}
   movementLimitObj_DefaultColor: {r: 1, g: 1, b: 1, a: .168627456}
   movementLimitObj_NoMvmntColor: {r: 1, g: 0, b: 0, a: .168627456}
   scaleDiff: 0
   initMvmntTransform: {x: 0, y: 0, z: 0}
   movePlayer: 0
+  cancelPlayerMove: 0
   newPos: {x: 0, y: 0, z: 0}
 --- !u!58 &1699728807
 CircleCollider2D:
@@ -4564,7 +4635,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
 --- !u!1 &1772334750
 GameObject:
   m_ObjectHideFlags: 0
@@ -4710,12 +4781,14 @@ MonoBehaviour:
   playerTeamSide: -1
   playerIndexPosOnTeam: -1
   disable: 0
+  minDistBtwTeamPlayers: 0
   movementLimitObj: {fileID: 0}
   movementLimitObj_DefaultColor: {r: 1, g: 1, b: 1, a: .168627456}
   movementLimitObj_NoMvmntColor: {r: 1, g: 0, b: 0, a: .168627456}
   scaleDiff: 0
   initMvmntTransform: {x: 0, y: 0, z: 0}
   movePlayer: 0
+  cancelPlayerMove: 0
   newPos: {x: 0, y: 0, z: 0}
 --- !u!58 &1819853611
 CircleCollider2D:
@@ -4865,12 +4938,14 @@ MonoBehaviour:
   playerTeamSide: -1
   playerIndexPosOnTeam: -1
   disable: 0
+  minDistBtwTeamPlayers: 0
   movementLimitObj: {fileID: 0}
   movementLimitObj_DefaultColor: {r: 1, g: 1, b: 1, a: .168627456}
   movementLimitObj_NoMvmntColor: {r: 1, g: 0, b: 0, a: .168627456}
   scaleDiff: 0
   initMvmntTransform: {x: 0, y: 0, z: 0}
   movePlayer: 0
+  cancelPlayerMove: 0
   newPos: {x: 0, y: 0, z: 0}
 --- !u!58 &1882371320
 CircleCollider2D:
@@ -5066,7 +5141,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e8c20f65cd4a0ec4485bce5f7497fcce, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e8c20f65cd4a0ec4485bce5f7497fcce, type: 2}
@@ -5138,12 +5213,14 @@ MonoBehaviour:
   playerTeamSide: -1
   playerIndexPosOnTeam: -1
   disable: 0
+  minDistBtwTeamPlayers: 0
   movementLimitObj: {fileID: 0}
   movementLimitObj_DefaultColor: {r: 1, g: 1, b: 1, a: .168627456}
   movementLimitObj_NoMvmntColor: {r: 1, g: 0, b: 0, a: .168627456}
   scaleDiff: 0
   initMvmntTransform: {x: 0, y: 0, z: 0}
   movePlayer: 0
+  cancelPlayerMove: 0
   newPos: {x: 0, y: 0, z: 0}
 --- !u!58 &1910694384
 CircleCollider2D:
@@ -5570,7 +5647,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d54f907108dad674eb3272d50eba9576, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d54f907108dad674eb3272d50eba9576, type: 2}
@@ -5715,12 +5792,14 @@ MonoBehaviour:
   playerTeamSide: -1
   playerIndexPosOnTeam: -1
   disable: 0
+  minDistBtwTeamPlayers: 0
   movementLimitObj: {fileID: 0}
   movementLimitObj_DefaultColor: {r: 1, g: 1, b: 1, a: .168627456}
   movementLimitObj_NoMvmntColor: {r: 1, g: 0, b: 0, a: .168627456}
   scaleDiff: 0
   initMvmntTransform: {x: 0, y: 0, z: 0}
   movePlayer: 0
+  cancelPlayerMove: 0
   newPos: {x: 0, y: 0, z: 0}
 --- !u!114 &2132050978
 MonoBehaviour:
