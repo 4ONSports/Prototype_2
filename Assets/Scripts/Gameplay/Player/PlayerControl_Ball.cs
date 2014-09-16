@@ -11,7 +11,7 @@ public class PlayerControl_Ball : MonoBehaviour {
 	[SerializeField] public float minSwipeDistanceToShoot_Mouse = 1.0f;
 
 	[SerializeField] private float minSwipeDistanceToShoot = 1.0f;
-	[SerializeField] private float coolDownPassTime = 0.2f;
+	[SerializeField] private float coolDownShootTime = 0.2f;
 	[SerializeField] private PlayerControl_Movement pc_mvmnt;
 
 	// Use this for initialization
@@ -70,7 +70,7 @@ public class PlayerControl_Ball : MonoBehaviour {
 
 	private IEnumerator OnCoolDown() {
 		this.collider2D.enabled = false;
-		yield return new WaitForSeconds(coolDownPassTime);
+		yield return new WaitForSeconds(coolDownShootTime);
 		this.collider2D.enabled = true;
 	}
 }

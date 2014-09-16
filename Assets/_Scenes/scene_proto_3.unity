@@ -1557,7 +1557,7 @@ MonoBehaviour:
   minSwipeDistanceToShoot_Touch: 25
   minSwipeDistanceToShoot_Mouse: 25
   minSwipeDistanceToShoot: 25
-  coolDownPassTime: .200000003
+  coolDownShootTime: .200000003
   pc_mvmnt: {fileID: 0}
 --- !u!114 &900116997
 MonoBehaviour:
@@ -1854,7 +1854,7 @@ MonoBehaviour:
   minSwipeDistanceToShoot_Touch: 25
   minSwipeDistanceToShoot_Mouse: 25
   minSwipeDistanceToShoot: 25
-  coolDownPassTime: .200000003
+  coolDownShootTime: .200000003
   pc_mvmnt: {fileID: 0}
 --- !u!114 &972260614
 MonoBehaviour:
@@ -2206,7 +2206,7 @@ MonoBehaviour:
   minSwipeDistanceToShoot_Touch: 25
   minSwipeDistanceToShoot_Mouse: 25
   minSwipeDistanceToShoot: 25
-  coolDownPassTime: .200000003
+  coolDownShootTime: .200000003
   pc_mvmnt: {fileID: 0}
 --- !u!114 &1049921620
 MonoBehaviour:
@@ -3309,7 +3309,7 @@ MonoBehaviour:
   minSwipeDistanceToShoot_Touch: 25
   minSwipeDistanceToShoot_Mouse: 25
   minSwipeDistanceToShoot: 25
-  coolDownPassTime: .200000003
+  coolDownShootTime: .200000003
   pc_mvmnt: {fileID: 0}
 --- !u!114 &1345651161
 MonoBehaviour:
@@ -3825,7 +3825,7 @@ MonoBehaviour:
   minSwipeDistanceToShoot_Touch: 25
   minSwipeDistanceToShoot_Mouse: 25
   minSwipeDistanceToShoot: 25
-  coolDownPassTime: .200000003
+  coolDownShootTime: .200000003
   pc_mvmnt: {fileID: 0}
 --- !u!114 &1527964657
 MonoBehaviour:
@@ -4318,7 +4318,7 @@ MonoBehaviour:
   minSwipeDistanceToShoot_Touch: 25
   minSwipeDistanceToShoot_Mouse: 25
   minSwipeDistanceToShoot: 25
-  coolDownPassTime: .200000003
+  coolDownShootTime: .200000003
   pc_mvmnt: {fileID: 0}
 --- !u!114 &1699728806
 MonoBehaviour:
@@ -4756,7 +4756,7 @@ MonoBehaviour:
   minSwipeDistanceToShoot_Touch: 25
   minSwipeDistanceToShoot_Mouse: 25
   minSwipeDistanceToShoot: 25
-  coolDownPassTime: .200000003
+  coolDownShootTime: .200000003
   pc_mvmnt: {fileID: 0}
 --- !u!114 &1819853610
 MonoBehaviour:
@@ -4913,7 +4913,7 @@ MonoBehaviour:
   minSwipeDistanceToShoot_Touch: 25
   minSwipeDistanceToShoot_Mouse: 25
   minSwipeDistanceToShoot: 25
-  coolDownPassTime: .200000003
+  coolDownShootTime: .200000003
   pc_mvmnt: {fileID: 0}
 --- !u!114 &1882371319
 MonoBehaviour:
@@ -5188,7 +5188,7 @@ MonoBehaviour:
   minSwipeDistanceToShoot_Touch: 25
   minSwipeDistanceToShoot_Mouse: 25
   minSwipeDistanceToShoot: 25
-  coolDownPassTime: .200000003
+  coolDownShootTime: .200000003
   pc_mvmnt: {fileID: 0}
 --- !u!114 &1910694383
 MonoBehaviour:
@@ -5820,7 +5820,7 @@ MonoBehaviour:
   minSwipeDistanceToShoot_Touch: 25
   minSwipeDistanceToShoot_Mouse: 25
   minSwipeDistanceToShoot: 25
-  coolDownPassTime: .200000003
+  coolDownShootTime: .200000003
   pc_mvmnt: {fileID: 0}
 --- !u!50 &2132050980
 Rigidbody2D:
