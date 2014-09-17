@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameMode_RuleSet4 : GameMode {
+public class GameMode_Offline : GameMode {
 
 	[SerializeField] private TextMesh timerText = null;
 	[SerializeField] private TextMesh winText = null;
@@ -101,7 +101,7 @@ public class GameMode_RuleSet4 : GameMode {
 
 	protected override void _OnGoalScored(Team _scoringTeam) {
 		ResetAllPlayersPositions ();
-		GetOppositeTeam(_scoringTeam).AddScore();
+		GetTeam_Opponent(_scoringTeam.side).AddScore();
 		_scoringTeam.GiveBallToGoalKeeper(_scoringTeam.teamGoal.GetBall);
 		UpdateScoreText (teams [0].Score, teams [1].Score);
 		if (MaxScoreReached ()) {
@@ -128,15 +128,21 @@ public class GameMode_RuleSet4 : GameMode {
 	}
 
 	void DisabelAllPlayers() {
-		for( int i=0; i<teams.Length; ++i )	teams[i].DisbaleAllPlayerMovmentsAndBalls();
+		for( int i=0; i<teams.Length; ++i )	{
+			teams[i].DisbaleAllPlayerMovmentsAndBalls();
+		}
 	}
 
 	void EnableAllPlayers() {
-		for( int i=0; i<teams.Length; ++i )	teams[i].EnableAllPlayers();
+		for( int i=0; i<teams.Length; ++i )	{
+			teams[i].EnableAllPlayers();
+		}
 	}
 	
 	void ResetAllPlayersPositions () {
-		for( int i=0; i<teams.Length; ++i )	teams[i].ResetTeamPosition();
+		for( int i=0; i<teams.Length; ++i ) {
+			teams[i].ResetTeamPosition();
+		}
 	}
 
 	void ResetTimer() {
@@ -151,20 +157,23 @@ public class GameMode_RuleSet4 : GameMode {
 
 	void CheckNewTurn() {
 		currentNumberOfMovments += 1;
-		if(currentNumberOfMovments  >= numberOfMovments) NewTurn();
+		if(currentNumberOfMovments  >= numberOfMovments) {
+			NewTurn();
+		}
 	}
 
 	void NewTurn() {
 		ResetTimer ();
-		teamOfTheTurn = GetOppositeTeam (GetTeamByTeamSide (teamOfTheTurn)).side;//Change team of the turn
+		teamOfTheTurn = GetTeam_Opponent (teamOfTheTurn).side;//Change team of the turn
 		GetTeamByTeamSide (teamOfTheTurn).EnableAllPlayers ();//Enable team of the turn
-		GetOppositeTeam (GetTeamByTeamSide (teamOfTheTurn)).DisbaleAllPlayerMovmentsAndBalls ();//Disable opposite team
+		GetTeam_Opponent (teamOfTheTurn).DisbaleAllPlayerMovmentsAndBalls ();//Disable opposite team
 	}
 
 	bool MaxScoreReached() {
 		for (int i=0; i<teams.Length; ++i) {
-			if(teams[i].Score >= numOfGoalsToWin)
+			if(teams[i].Score >= numOfGoalsToWin) {
 				return true;
+			}
 		}
 		return false;
 	}

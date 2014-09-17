@@ -254,7 +254,7 @@ Transform:
   m_LocalScale: {x: 1.46003151, y: 1.10601628, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 5
 --- !u!1 &109323738
 GameObject:
   m_ObjectHideFlags: 0
@@ -945,7 +945,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 6
 --- !u!1 &427776488
 GameObject:
   m_ObjectHideFlags: 0
@@ -1145,46 +1145,47 @@ Transform:
   - {fileID: 1389712904}
   m_Father: {fileID: 228522307}
   m_RootOrder: 1
---- !u!1 &569888998
+--- !u!1 &584666943
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 569889001}
-  - 114: {fileID: 569889000}
-  - 114: {fileID: 569888999}
+  - 4: {fileID: 584666946}
+  - 114: {fileID: 584666945}
+  - 114: {fileID: 584666944}
+  - 114: {fileID: 584666947}
   m_Layer: 0
-  m_Name: GameMode_R3
+  m_Name: GameMode_Online
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &569888999
+  m_IsActive: 1
+--- !u!114 &584666944
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 569888998}
+  m_GameObject: {fileID: 584666943}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b7022ca2284e7b4e84acd6fdbfaed0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &569889000
+--- !u!114 &584666945
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 569888998}
+  m_GameObject: {fileID: 584666943}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30e285ba1f8d2a54082a761c840ad81b, type: 3}
+  m_Script: {fileID: 11500000, guid: 407f35ecd2648bf449d9cd367e483914, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numOfGoalsToWin: 0
+  numOfGoalsToWin: 3
   teams:
   - {fileID: 247531806}
   - {fileID: 1389712905}
@@ -1193,18 +1194,29 @@ MonoBehaviour:
   winText: {fileID: 1368670644}
   totalTurnTimeSeconds: 10
   numberOfMovments: 1
---- !u!4 &569889001
+--- !u!4 &584666946
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 569888998}
+  m_GameObject: {fileID: 584666943}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 9
+--- !u!114 &584666947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 584666943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5819daaf5b544b54a88b0f10ade370dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &593671277
 GameObject:
   m_ObjectHideFlags: 0
@@ -1216,12 +1228,12 @@ GameObject:
   - 114: {fileID: 593671279}
   - 114: {fileID: 593671278}
   m_Layer: 0
-  m_Name: GameMode_R4
+  m_Name: GameMode_Offline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &593671278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1241,7 +1253,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 593671277}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdb23a0f7b65c754ca849d662818cd4b, type: 3}
+  m_Script: {fileID: 11500000, guid: 605b60c643b2e4d428c084fd665df9c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   numOfGoalsToWin: 3
@@ -1264,7 +1276,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 4
 --- !u!1 &665110928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1527,7 +1539,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d94ebdc46e00ce14c81d7ec41388432e, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 10200000, guid: d94ebdc46e00ce14c81d7ec41388432e, type: 2}
       propertyPath: m_Text
@@ -1805,7 +1817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41244b4f2671dbc4c9cb0a34b2068776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeGameMode: {fileID: 593671279}
+  activeGameMode: {fileID: 584666945}
   pc_mvmnts:
   - {fileID: 2132050977}
   - {fileID: 1049921620}
@@ -2137,65 +2149,6 @@ Prefab:
   m_RootGameObject: {fileID: 41325163}
   m_IsPrefabParent: 0
   m_IsExploded: 1
---- !u!1 &1042311640
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1042311643}
-  - 114: {fileID: 1042311642}
-  - 114: {fileID: 1042311641}
-  m_Layer: 0
-  m_Name: GameMode_R2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1042311641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1042311640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b7022ca2284e7b4e84acd6fdbfaed0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1042311642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1042311640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d844191c97dd50c479ec982a06e8cd2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numOfGoalsToWin: 3
-  teams:
-  - {fileID: 247531806}
-  - {fileID: 1389712905}
-  scoreText: {fileID: 1744758161}
-  timerText: {fileID: 401368709}
-  winText: {fileID: 1368670644}
-  totalTurnTimeSeconds: 10
---- !u!4 &1042311643
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1042311640}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
 --- !u!1001 &1045349117
 Prefab:
   m_ObjectHideFlags: 0
@@ -3613,7 +3566,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 8
 --- !u!1 &1389712903
 GameObject:
   m_ObjectHideFlags: 0
@@ -4364,62 +4317,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1184735950}
   m_GameObject: {fileID: 1626362267}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1638356627
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1638356629}
-  - 114: {fileID: 1638356628}
-  - 114: {fileID: 1638356630}
-  m_Layer: 0
-  m_Name: GameMode_R1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1638356628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1638356627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81937ba36693b4849820e0786396ac5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numOfGoalsToWin: 3
-  teams:
-  - {fileID: 247531806}
-  - {fileID: 1389712905}
-  scoreText: {fileID: 1744758161}
---- !u!4 &1638356629
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1638356627}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
---- !u!114 &1638356630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1638356627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b7022ca2284e7b4e84acd6fdbfaed0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1699728804
 GameObject:
   m_ObjectHideFlags: 0
@@ -4777,7 +4674,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 7
 --- !u!1 &1772334750
 GameObject:
   m_ObjectHideFlags: 0
@@ -5283,7 +5180,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e8c20f65cd4a0ec4485bce5f7497fcce, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 10200000, guid: e8c20f65cd4a0ec4485bce5f7497fcce, type: 2}
       propertyPath: m_FontSize
@@ -5793,7 +5690,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d54f907108dad674eb3272d50eba9576, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d54f907108dad674eb3272d50eba9576, type: 2}

@@ -6,7 +6,7 @@ public class GameMode : MonoBehaviour {
 	public Team[] teams;
 
 	public TextMesh scoreText = null;
-	protected bool gameOver = false;
+	protected bool gameOver = true;
 
 
 	void Start() {
@@ -24,8 +24,7 @@ public class GameMode : MonoBehaviour {
 	}
 
 	public void HandleEvent(GameEvent _event) {
-		switch(_event.gameEvent)
-		{
+		switch(_event.gameEvent) {
 		case EGameEvent.EVT_GOAL_SCORED:
 			_OnGoalScored((Team)_event.gameEventProperty);
 			break;
@@ -47,11 +46,11 @@ public class GameMode : MonoBehaviour {
 		}
 	}
 
-	public Team GetOppositeTeam (Team _team) {
-		if(_team.side == TeamSide.SIDE_HOME)
-		return teams[1];
+	public Team GetTeam_Opponent (TeamSide _side) {
+		if(_side == TeamSide.SIDE_HOME)
+			return teams[(int)TeamSide.SIDE_AWAY];
 		else
-		return teams[0];
+			return teams[(int)TeamSide.SIDE_HOME];
 	}
 
 	public Team GetTeamByTeamSide (TeamSide _teamSide) {
